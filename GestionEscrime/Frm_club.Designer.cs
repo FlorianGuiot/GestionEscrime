@@ -30,30 +30,41 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Clubs = new System.Windows.Forms.TabPage();
-            this.Adherent = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AnnulerClub = new System.Windows.Forms.Button();
+            this.ConfirmerClub = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.SupprimerClub = new System.Windows.Forms.Button();
+            this.AjoutClub = new System.Windows.Forms.Button();
+            this.ModifClub = new System.Windows.Forms.Button();
+            this.club_textBox = new System.Windows.Forms.TextBox();
+            this.dataGridView_Clubs = new System.Windows.Forms.DataGridView();
+            this.Adherent = new System.Windows.Forms.TabPage();
+            this.SLclub_textBox = new System.Windows.Forms.TextBox();
+            this.ConfirmerAdherent = new System.Windows.Forms.Button();
+            this.AnnulerAdherent = new System.Windows.Forms.Button();
+            this.SupprimerAdherent = new System.Windows.Forms.Button();
+            this.AjoutAdherent = new System.Windows.Forms.Button();
+            this.ModifierAdherent = new System.Windows.Forms.Button();
+            this.adherent_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.dataGridView_Adherent = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.dataGridView_Armes = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.ModifierArmes = new System.Windows.Forms.Button();
+            this.SupprimerArmes = new System.Windows.Forms.Button();
+            this.AjoutArmes = new System.Windows.Forms.Button();
+            this.ConfirmerArmes = new System.Windows.Forms.Button();
+            this.AnnulerArmes = new System.Windows.Forms.Button();
+            this.adherent_comboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.Clubs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Clubs)).BeginInit();
             this.Adherent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,92 +72,50 @@
             this.tabControl1.Controls.Add(this.Clubs);
             this.tabControl1.Controls.Add(this.Adherent);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Location = new System.Drawing.Point(3, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(795, 435);
+            this.tabControl1.Size = new System.Drawing.Size(795, 426);
             this.tabControl1.TabIndex = 1;
             // 
             // Clubs
             // 
-            this.Clubs.Controls.Add(this.button10);
-            this.Clubs.Controls.Add(this.button7);
+            this.Clubs.Controls.Add(this.AnnulerClub);
+            this.Clubs.Controls.Add(this.ConfirmerClub);
             this.Clubs.Controls.Add(this.label1);
-            this.Clubs.Controls.Add(this.button3);
-            this.Clubs.Controls.Add(this.button2);
-            this.Clubs.Controls.Add(this.button1);
-            this.Clubs.Controls.Add(this.textBox1);
-            this.Clubs.Controls.Add(this.dataGridView1);
+            this.Clubs.Controls.Add(this.SupprimerClub);
+            this.Clubs.Controls.Add(this.AjoutClub);
+            this.Clubs.Controls.Add(this.ModifClub);
+            this.Clubs.Controls.Add(this.club_textBox);
+            this.Clubs.Controls.Add(this.dataGridView_Clubs);
             this.Clubs.Location = new System.Drawing.Point(4, 25);
             this.Clubs.Name = "Clubs";
             this.Clubs.Padding = new System.Windows.Forms.Padding(3);
-            this.Clubs.Size = new System.Drawing.Size(787, 406);
+            this.Clubs.Size = new System.Drawing.Size(787, 397);
             this.Clubs.TabIndex = 0;
             this.Clubs.Text = "Clubs";
             this.Clubs.UseVisualStyleBackColor = true;
             // 
-            // Adherent
+            // AnnulerClub
             // 
-            this.Adherent.Controls.Add(this.textBox3);
-            this.Adherent.Controls.Add(this.button9);
-            this.Adherent.Controls.Add(this.button8);
-            this.Adherent.Controls.Add(this.button6);
-            this.Adherent.Controls.Add(this.button5);
-            this.Adherent.Controls.Add(this.button4);
-            this.Adherent.Controls.Add(this.textBox2);
-            this.Adherent.Controls.Add(this.label2);
-            this.Adherent.Controls.Add(this.dataGridView2);
-            this.Adherent.Location = new System.Drawing.Point(4, 25);
-            this.Adherent.Name = "Adherent";
-            this.Adherent.Padding = new System.Windows.Forms.Padding(3);
-            this.Adherent.Size = new System.Drawing.Size(787, 406);
-            this.Adherent.TabIndex = 1;
-            this.Adherent.Text = "Adherent";
-            this.Adherent.UseVisualStyleBackColor = true;
+            this.AnnulerClub.BackColor = System.Drawing.Color.Red;
+            this.AnnulerClub.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AnnulerClub.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AnnulerClub.Location = new System.Drawing.Point(492, 295);
+            this.AnnulerClub.Name = "AnnulerClub";
+            this.AnnulerClub.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerClub.TabIndex = 7;
+            this.AnnulerClub.Text = "Annuler";
+            this.AnnulerClub.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // ConfirmerClub
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 41);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 347);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(359, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(660, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(359, 105);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(492, 105);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ConfirmerClub.Location = new System.Drawing.Point(296, 295);
+            this.ConfirmerClub.Name = "ConfirmerClub";
+            this.ConfirmerClub.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerClub.TabIndex = 6;
+            this.ConfirmerClub.Text = "Confirmer";
+            this.ConfirmerClub.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -159,15 +128,133 @@
             this.label1.Text = "Clubs";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView2
+            // SupprimerClub
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 41);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 347);
-            this.dataGridView2.TabIndex = 0;
+            this.SupprimerClub.Location = new System.Drawing.Point(492, 105);
+            this.SupprimerClub.Name = "SupprimerClub";
+            this.SupprimerClub.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerClub.TabIndex = 4;
+            this.SupprimerClub.Text = "Supprimer";
+            this.SupprimerClub.UseVisualStyleBackColor = true;
+            this.SupprimerClub.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // AjoutClub
+            // 
+            this.AjoutClub.Location = new System.Drawing.Point(359, 105);
+            this.AjoutClub.Name = "AjoutClub";
+            this.AjoutClub.Size = new System.Drawing.Size(105, 23);
+            this.AjoutClub.TabIndex = 3;
+            this.AjoutClub.Text = "Ajouter";
+            this.AjoutClub.UseVisualStyleBackColor = true;
+            // 
+            // ModifClub
+            // 
+            this.ModifClub.Location = new System.Drawing.Point(660, 52);
+            this.ModifClub.Name = "ModifClub";
+            this.ModifClub.Size = new System.Drawing.Size(105, 23);
+            this.ModifClub.TabIndex = 2;
+            this.ModifClub.Text = "Modifier";
+            this.ModifClub.UseVisualStyleBackColor = true;
+            this.ModifClub.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // club_textBox
+            // 
+            this.club_textBox.Location = new System.Drawing.Point(359, 53);
+            this.club_textBox.Name = "club_textBox";
+            this.club_textBox.Size = new System.Drawing.Size(238, 22);
+            this.club_textBox.TabIndex = 1;
+            // 
+            // dataGridView_Clubs
+            // 
+            this.dataGridView_Clubs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Clubs.Location = new System.Drawing.Point(6, 41);
+            this.dataGridView_Clubs.Name = "dataGridView_Clubs";
+            this.dataGridView_Clubs.RowHeadersWidth = 51;
+            this.dataGridView_Clubs.RowTemplate.Height = 24;
+            this.dataGridView_Clubs.Size = new System.Drawing.Size(240, 347);
+            this.dataGridView_Clubs.TabIndex = 0;
+            // 
+            // Adherent
+            // 
+            this.Adherent.Controls.Add(this.SLclub_textBox);
+            this.Adherent.Controls.Add(this.ConfirmerAdherent);
+            this.Adherent.Controls.Add(this.AnnulerAdherent);
+            this.Adherent.Controls.Add(this.SupprimerAdherent);
+            this.Adherent.Controls.Add(this.AjoutAdherent);
+            this.Adherent.Controls.Add(this.ModifierAdherent);
+            this.Adherent.Controls.Add(this.adherent_textBox);
+            this.Adherent.Controls.Add(this.label2);
+            this.Adherent.Controls.Add(this.dataGridView_Adherent);
+            this.Adherent.Location = new System.Drawing.Point(4, 25);
+            this.Adherent.Name = "Adherent";
+            this.Adherent.Padding = new System.Windows.Forms.Padding(3);
+            this.Adherent.Size = new System.Drawing.Size(787, 397);
+            this.Adherent.TabIndex = 1;
+            this.Adherent.Text = "Adherent";
+            this.Adherent.UseVisualStyleBackColor = true;
+            // 
+            // SLclub_textBox
+            // 
+            this.SLclub_textBox.Enabled = false;
+            this.SLclub_textBox.Location = new System.Drawing.Point(226, 6);
+            this.SLclub_textBox.Name = "SLclub_textBox";
+            this.SLclub_textBox.Size = new System.Drawing.Size(238, 22);
+            this.SLclub_textBox.TabIndex = 9;
+            // 
+            // ConfirmerAdherent
+            // 
+            this.ConfirmerAdherent.Location = new System.Drawing.Point(296, 295);
+            this.ConfirmerAdherent.Name = "ConfirmerAdherent";
+            this.ConfirmerAdherent.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerAdherent.TabIndex = 8;
+            this.ConfirmerAdherent.Text = "Confirmer";
+            this.ConfirmerAdherent.UseVisualStyleBackColor = true;
+            // 
+            // AnnulerAdherent
+            // 
+            this.AnnulerAdherent.BackColor = System.Drawing.Color.Red;
+            this.AnnulerAdherent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AnnulerAdherent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AnnulerAdherent.Location = new System.Drawing.Point(492, 295);
+            this.AnnulerAdherent.Name = "AnnulerAdherent";
+            this.AnnulerAdherent.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerAdherent.TabIndex = 7;
+            this.AnnulerAdherent.Text = "Annuler";
+            this.AnnulerAdherent.UseVisualStyleBackColor = false;
+            // 
+            // SupprimerAdherent
+            // 
+            this.SupprimerAdherent.Location = new System.Drawing.Point(492, 105);
+            this.SupprimerAdherent.Name = "SupprimerAdherent";
+            this.SupprimerAdherent.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerAdherent.TabIndex = 5;
+            this.SupprimerAdherent.Text = "Supprimer";
+            this.SupprimerAdherent.UseVisualStyleBackColor = true;
+            // 
+            // AjoutAdherent
+            // 
+            this.AjoutAdherent.Location = new System.Drawing.Point(359, 105);
+            this.AjoutAdherent.Name = "AjoutAdherent";
+            this.AjoutAdherent.Size = new System.Drawing.Size(105, 23);
+            this.AjoutAdherent.TabIndex = 4;
+            this.AjoutAdherent.Text = "Ajouter";
+            this.AjoutAdherent.UseVisualStyleBackColor = true;
+            // 
+            // ModifierAdherent
+            // 
+            this.ModifierAdherent.Location = new System.Drawing.Point(660, 52);
+            this.ModifierAdherent.Name = "ModifierAdherent";
+            this.ModifierAdherent.Size = new System.Drawing.Size(105, 23);
+            this.ModifierAdherent.TabIndex = 3;
+            this.ModifierAdherent.Text = "Modifier";
+            this.ModifierAdherent.UseVisualStyleBackColor = true;
+            // 
+            // adherent_textBox
+            // 
+            this.adherent_textBox.Location = new System.Drawing.Point(359, 53);
+            this.adherent_textBox.Name = "adherent_textBox";
+            this.adherent_textBox.Size = new System.Drawing.Size(238, 22);
+            this.adherent_textBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -179,93 +266,117 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Adherent";
             // 
-            // textBox2
+            // dataGridView_Adherent
             // 
-            this.textBox2.Location = new System.Drawing.Point(359, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 22);
-            this.textBox2.TabIndex = 2;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(660, 52);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(359, 105);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(492, 105);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.dataGridView_Adherent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Adherent.Location = new System.Drawing.Point(6, 41);
+            this.dataGridView_Adherent.Name = "dataGridView_Adherent";
+            this.dataGridView_Adherent.RowHeadersWidth = 51;
+            this.dataGridView_Adherent.RowTemplate.Height = 24;
+            this.dataGridView_Adherent.Size = new System.Drawing.Size(240, 347);
+            this.dataGridView_Adherent.TabIndex = 0;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.adherent_comboBox);
+            this.tabPage3.Controls.Add(this.AnnulerArmes);
+            this.tabPage3.Controls.Add(this.ConfirmerArmes);
+            this.tabPage3.Controls.Add(this.AjoutArmes);
+            this.tabPage3.Controls.Add(this.SupprimerArmes);
+            this.tabPage3.Controls.Add(this.ModifierArmes);
+            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.dataGridView_Armes);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(787, 406);
+            this.tabPage3.Size = new System.Drawing.Size(787, 397);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Armes";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // dataGridView_Armes
             // 
-            this.button8.Location = new System.Drawing.Point(492, 295);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(168, 54);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            this.dataGridView_Armes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Armes.Location = new System.Drawing.Point(6, 41);
+            this.dataGridView_Armes.Name = "dataGridView_Armes";
+            this.dataGridView_Armes.RowHeadersWidth = 51;
+            this.dataGridView_Armes.RowTemplate.Height = 24;
+            this.dataGridView_Armes.Size = new System.Drawing.Size(240, 347);
+            this.dataGridView_Armes.TabIndex = 0;
             // 
-            // button9
+            // label3
             // 
-            this.button9.Location = new System.Drawing.Point(296, 295);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(168, 54);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "button9";
-            this.button9.UseVisualStyleBackColor = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label3.Location = new System.Drawing.Point(67, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 26);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Armes";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // button7
+            // textBox4
             // 
-            this.button7.Location = new System.Drawing.Point(296, 295);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(168, 54);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            this.textBox4.Location = new System.Drawing.Point(359, 53);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(238, 22);
+            this.textBox4.TabIndex = 2;
             // 
-            // button10
+            // ModifierArmes
             // 
-            this.button10.Location = new System.Drawing.Point(492, 295);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(168, 54);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
+            this.ModifierArmes.Location = new System.Drawing.Point(660, 52);
+            this.ModifierArmes.Name = "ModifierArmes";
+            this.ModifierArmes.Size = new System.Drawing.Size(105, 23);
+            this.ModifierArmes.TabIndex = 3;
+            this.ModifierArmes.Text = "Modifier";
+            this.ModifierArmes.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // SupprimerArmes
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(226, 6);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(238, 22);
-            this.textBox3.TabIndex = 9;
+            this.SupprimerArmes.Location = new System.Drawing.Point(492, 105);
+            this.SupprimerArmes.Name = "SupprimerArmes";
+            this.SupprimerArmes.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerArmes.TabIndex = 4;
+            this.SupprimerArmes.Text = "Supprimer";
+            this.SupprimerArmes.UseVisualStyleBackColor = true;
+            // 
+            // AjoutArmes
+            // 
+            this.AjoutArmes.Location = new System.Drawing.Point(359, 105);
+            this.AjoutArmes.Name = "AjoutArmes";
+            this.AjoutArmes.Size = new System.Drawing.Size(105, 23);
+            this.AjoutArmes.TabIndex = 5;
+            this.AjoutArmes.Text = "Ajouter";
+            this.AjoutArmes.UseVisualStyleBackColor = true;
+            // 
+            // ConfirmerArmes
+            // 
+            this.ConfirmerArmes.Location = new System.Drawing.Point(296, 295);
+            this.ConfirmerArmes.Name = "ConfirmerArmes";
+            this.ConfirmerArmes.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerArmes.TabIndex = 6;
+            this.ConfirmerArmes.Text = "Confirmer";
+            this.ConfirmerArmes.UseVisualStyleBackColor = true;
+            // 
+            // AnnulerArmes
+            // 
+            this.AnnulerArmes.BackColor = System.Drawing.Color.Red;
+            this.AnnulerArmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AnnulerArmes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AnnulerArmes.Location = new System.Drawing.Point(492, 295);
+            this.AnnulerArmes.Name = "AnnulerArmes";
+            this.AnnulerArmes.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerArmes.TabIndex = 7;
+            this.AnnulerArmes.Text = "Annuler";
+            this.AnnulerArmes.UseVisualStyleBackColor = false;
+            // 
+            // adherent_comboBox
+            // 
+            this.adherent_comboBox.FormattingEnabled = true;
+            this.adherent_comboBox.Location = new System.Drawing.Point(226, 6);
+            this.adherent_comboBox.Name = "adherent_comboBox";
+            this.adherent_comboBox.Size = new System.Drawing.Size(238, 24);
+            this.adherent_comboBox.TabIndex = 8;
             // 
             // Frm_club
             // 
@@ -278,10 +389,13 @@
             this.tabControl1.ResumeLayout(false);
             this.Clubs.ResumeLayout(false);
             this.Clubs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Clubs)).EndInit();
             this.Adherent.ResumeLayout(false);
             this.Adherent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,23 +405,32 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Clubs;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button SupprimerClub;
+        private System.Windows.Forms.Button AjoutClub;
+        private System.Windows.Forms.Button ModifClub;
+        private System.Windows.Forms.TextBox club_textBox;
+        private System.Windows.Forms.DataGridView dataGridView_Clubs;
         private System.Windows.Forms.TabPage Adherent;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox adherent_textBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView_Adherent;
+        private System.Windows.Forms.Button SupprimerAdherent;
+        private System.Windows.Forms.Button AjoutAdherent;
+        private System.Windows.Forms.Button ModifierAdherent;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button AnnulerClub;
+        private System.Windows.Forms.Button ConfirmerClub;
+        private System.Windows.Forms.Button ConfirmerAdherent;
+        private System.Windows.Forms.Button AnnulerAdherent;
+        private System.Windows.Forms.TextBox SLclub_textBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dataGridView_Armes;
+        private System.Windows.Forms.ComboBox adherent_comboBox;
+        private System.Windows.Forms.Button AnnulerArmes;
+        private System.Windows.Forms.Button ConfirmerArmes;
+        private System.Windows.Forms.Button AjoutArmes;
+        private System.Windows.Forms.Button SupprimerArmes;
+        private System.Windows.Forms.Button ModifierArmes;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
