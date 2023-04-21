@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="escrimeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adherent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="25" />
+          <Property Name="prenom" Type="varchar" MaxLength="25" />
+          <Property Name="dateNaissance" Type="datetime" />
+          <Property Name="licence" Type="varchar" MaxLength="25" />
+          <Property Name="idClub" Type="int" />
+        </EntityType>
+        <EntityType Name="Arbitrer">
+          <Key>
+            <PropertyRef Name="idCompetition" />
+            <PropertyRef Name="idMaitreArme" />
+          </Key>
+          <Property Name="idCompetition" Type="int" Nullable="false" />
+          <Property Name="idMaitreArme" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="arme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="armer">
+          <Key>
+            <PropertyRef Name="idAdherent" />
+            <PropertyRef Name="idArme" />
+          </Key>
+          <Property Name="idAdherent" Type="int" Nullable="false" />
+          <Property Name="idArme" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" />
+          <Property Name="ville" Type="varchar" MaxLength="100" />
+          <Property Name="cotisation" Type="float" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="idClub" Type="int" />
+          <Property Name="idArme" Type="int" />
+          <Property Name="idGerant" Type="int" />
+        </EntityType>
+        <EntityType Name="MaitreArme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="brevet" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Participer">
+          <Key>
+            <PropertyRef Name="idAdherent" />
+            <PropertyRef Name="idCompetition" />
+          </Key>
+          <Property Name="idAdherent" Type="int" Nullable="false" />
+          <Property Name="idCompetition" Type="int" Nullable="false" />
+          <Property Name="classement" Type="int" />
+        </EntityType>
+        <Association Name="fk_adherent_club">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Adherent">
+              <PropertyRef Name="idClub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_arbitrer_competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="Arbitrer" Type="Self.Arbitrer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Arbitrer">
+              <PropertyRef Name="idCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_arbitrer_maitreArme">
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="1" />
+          <End Role="Arbitrer" Type="Self.Arbitrer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaitreArme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Arbitrer">
+              <PropertyRef Name="idMaitreArme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_armer_adherant">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+          <End Role="armer" Type="Self.armer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adherent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="armer">
+              <PropertyRef Name="idAdherent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_armer_arme">
+          <End Role="arme" Type="Self.arme" Multiplicity="1" />
+          <End Role="armer" Type="Self.armer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="armer">
+              <PropertyRef Name="idArme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_arme">
+          <End Role="arme" Type="Self.arme" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idArme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_club">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idClub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_maitreArme">
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaitreArme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idGerant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_maitreArme_adherent">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Adherent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaitreArme">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_participer_adherent">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+          <End Role="Participer" Type="Self.Participer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adherent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participer">
+              <PropertyRef Name="idAdherent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_participer_competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="Participer" Type="Self.Participer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participer">
+              <PropertyRef Name="idCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="escrimeModelStoreContainer">
+          <EntitySet Name="Adherent" EntityType="Self.Adherent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arbitrer" EntityType="Self.Arbitrer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="arme" EntityType="Self.arme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="armer" EntityType="Self.armer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaitreArme" EntityType="Self.MaitreArme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participer" EntityType="Self.Participer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_adherent_club" Association="Self.fk_adherent_club">
+            <End Role="Club" EntitySet="Club" />
+            <End Role="Adherent" EntitySet="Adherent" />
+          </AssociationSet>
+          <AssociationSet Name="fk_arbitrer_competition" Association="Self.fk_arbitrer_competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Arbitrer" EntitySet="Arbitrer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_arbitrer_maitreArme" Association="Self.fk_arbitrer_maitreArme">
+            <End Role="MaitreArme" EntitySet="MaitreArme" />
+            <End Role="Arbitrer" EntitySet="Arbitrer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_armer_adherant" Association="Self.fk_armer_adherant">
+            <End Role="Adherent" EntitySet="Adherent" />
+            <End Role="armer" EntitySet="armer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_armer_arme" Association="Self.fk_armer_arme">
+            <End Role="arme" EntitySet="arme" />
+            <End Role="armer" EntitySet="armer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_arme" Association="Self.fk_competition_arme">
+            <End Role="arme" EntitySet="arme" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_club" Association="Self.fk_competition_club">
+            <End Role="Club" EntitySet="Club" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_maitreArme" Association="Self.fk_competition_maitreArme">
+            <End Role="MaitreArme" EntitySet="MaitreArme" />
+            <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_maitreArme_adherent" Association="Self.fk_maitreArme_adherent">
+            <End Role="Adherent" EntitySet="Adherent" />
+            <End Role="MaitreArme" EntitySet="MaitreArme" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participer_adherent" Association="Self.fk_participer_adherent">
+            <End Role="Adherent" EntitySet="Adherent" />
+            <End Role="Participer" EntitySet="Participer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participer_competition" Association="Self.fk_participer_competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Participer" EntitySet="Participer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="escrimeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adherent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="prenom" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="dateNaissance" Type="DateTime" Precision="3" />
+          <Property Name="licence" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="idClub" Type="Int32" />
+          <NavigationProperty Name="Club" Relationship="Self.fk_adherent_club" FromRole="Adherent" ToRole="Club" />
+          <NavigationProperty Name="MaitreArme" Relationship="Self.fk_maitreArme_adherent" FromRole="Adherent" ToRole="MaitreArme" />
+          <NavigationProperty Name="Participers" Relationship="Self.fk_participer_adherent" FromRole="Adherent" ToRole="Participer" />
+          <NavigationProperty Name="armes" Relationship="Self.armer" FromRole="Adherent" ToRole="arme" />
+        </EntityType>
+        <EntityType Name="arme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Competitions" Relationship="Self.fk_competition_arme" FromRole="arme" ToRole="Competition" />
+          <NavigationProperty Name="Adherents" Relationship="Self.armer" FromRole="arme" ToRole="Adherent" />
+        </EntityType>
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cotisation" Type="Double" />
+          <NavigationProperty Name="Adherents" Relationship="Self.fk_adherent_club" FromRole="Club" ToRole="Adherent" />
+          <NavigationProperty Name="Competitions" Relationship="Self.fk_competition_club" FromRole="Club" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="idClub" Type="Int32" />
+          <Property Name="idArme" Type="Int32" />
+          <Property Name="idGerant" Type="Int32" />
+          <NavigationProperty Name="arme" Relationship="Self.fk_competition_arme" FromRole="Competition" ToRole="arme" />
+          <NavigationProperty Name="Club" Relationship="Self.fk_competition_club" FromRole="Competition" ToRole="Club" />
+          <NavigationProperty Name="MaitreArme" Relationship="Self.fk_competition_maitreArme" FromRole="Competition" ToRole="MaitreArme" />
+          <NavigationProperty Name="Participers" Relationship="Self.fk_participer_competition" FromRole="Competition" ToRole="Participer" />
+          <NavigationProperty Name="MaitreArmes" Relationship="Self.Arbitrer" FromRole="Competition" ToRole="MaitreArme" />
+        </EntityType>
+        <EntityType Name="MaitreArme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="brevet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adherent" Relationship="Self.fk_maitreArme_adherent" FromRole="MaitreArme" ToRole="Adherent" />
+          <NavigationProperty Name="Competitions" Relationship="Self.fk_competition_maitreArme" FromRole="MaitreArme" ToRole="Competition" />
+          <NavigationProperty Name="Competitions1" Relationship="Self.Arbitrer" FromRole="MaitreArme" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="Participer">
+          <Key>
+            <PropertyRef Name="idAdherent" />
+            <PropertyRef Name="idCompetition" />
+          </Key>
+          <Property Name="idAdherent" Type="Int32" Nullable="false" />
+          <Property Name="idCompetition" Type="Int32" Nullable="false" />
+          <Property Name="classement" Type="Int32" />
+          <NavigationProperty Name="Adherent" Relationship="Self.fk_participer_adherent" FromRole="Participer" ToRole="Adherent" />
+          <NavigationProperty Name="Competition" Relationship="Self.fk_participer_competition" FromRole="Participer" ToRole="Competition" />
+        </EntityType>
+        <Association Name="fk_adherent_club">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Adherent">
+              <PropertyRef Name="idClub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_maitreArme_adherent">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Adherent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MaitreArme">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_participer_adherent">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="1" />
+          <End Role="Participer" Type="Self.Participer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adherent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participer">
+              <PropertyRef Name="idAdherent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_arme">
+          <End Role="arme" Type="Self.arme" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="arme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idArme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_club">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idClub" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_competition_maitreArme">
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="0..1" />
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaitreArme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Competition">
+              <PropertyRef Name="idGerant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_participer_competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="Participer" Type="Self.Participer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participer">
+              <PropertyRef Name="idCompetition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Arbitrer">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+          <End Role="MaitreArme" Type="Self.MaitreArme" Multiplicity="*" />
+        </Association>
+        <Association Name="armer">
+          <End Role="Adherent" Type="Self.Adherent" Multiplicity="*" />
+          <End Role="arme" Type="Self.arme" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="escrimeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adherents" EntityType="Self.Adherent" />
+          <EntitySet Name="armes" EntityType="Self.arme" />
+          <EntitySet Name="Clubs" EntityType="Self.Club" />
+          <EntitySet Name="Competitions" EntityType="Self.Competition" />
+          <EntitySet Name="MaitreArmes" EntityType="Self.MaitreArme" />
+          <EntitySet Name="Participers" EntityType="Self.Participer" />
+          <AssociationSet Name="fk_adherent_club" Association="Self.fk_adherent_club">
+            <End Role="Club" EntitySet="Clubs" />
+            <End Role="Adherent" EntitySet="Adherents" />
+          </AssociationSet>
+          <AssociationSet Name="fk_maitreArme_adherent" Association="Self.fk_maitreArme_adherent">
+            <End Role="Adherent" EntitySet="Adherents" />
+            <End Role="MaitreArme" EntitySet="MaitreArmes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participer_adherent" Association="Self.fk_participer_adherent">
+            <End Role="Adherent" EntitySet="Adherents" />
+            <End Role="Participer" EntitySet="Participers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_arme" Association="Self.fk_competition_arme">
+            <End Role="arme" EntitySet="armes" />
+            <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_club" Association="Self.fk_competition_club">
+            <End Role="Club" EntitySet="Clubs" />
+            <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_competition_maitreArme" Association="Self.fk_competition_maitreArme">
+            <End Role="MaitreArme" EntitySet="MaitreArmes" />
+            <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_participer_competition" Association="Self.fk_participer_competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="Participer" EntitySet="Participers" />
+          </AssociationSet>
+          <AssociationSet Name="Arbitrer" Association="Self.Arbitrer">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="MaitreArme" EntitySet="MaitreArmes" />
+          </AssociationSet>
+          <AssociationSet Name="armer" Association="Self.armer">
+            <End Role="Adherent" EntitySet="Adherents" />
+            <End Role="arme" EntitySet="armes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="escrimeModelStoreContainer" CdmEntityContainer="escrimeEntities">
+          <EntitySetMapping Name="Adherents">
+            <EntityTypeMapping TypeName="escrimeModel.Adherent">
+              <MappingFragment StoreEntitySet="Adherent">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="dateNaissance" ColumnName="dateNaissance" />
+                <ScalarProperty Name="licence" ColumnName="licence" />
+                <ScalarProperty Name="idClub" ColumnName="idClub" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="armes">
+            <EntityTypeMapping TypeName="escrimeModel.arme">
+              <MappingFragment StoreEntitySet="arme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clubs">
+            <EntityTypeMapping TypeName="escrimeModel.Club">
+              <MappingFragment StoreEntitySet="Club">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="cotisation" ColumnName="cotisation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitions">
+            <EntityTypeMapping TypeName="escrimeModel.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="idClub" ColumnName="idClub" />
+                <ScalarProperty Name="idArme" ColumnName="idArme" />
+                <ScalarProperty Name="idGerant" ColumnName="idGerant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaitreArmes">
+            <EntityTypeMapping TypeName="escrimeModel.MaitreArme">
+              <MappingFragment StoreEntitySet="MaitreArme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="brevet" ColumnName="brevet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participers">
+            <EntityTypeMapping TypeName="escrimeModel.Participer">
+              <MappingFragment StoreEntitySet="Participer">
+                <ScalarProperty Name="idAdherent" ColumnName="idAdherent" />
+                <ScalarProperty Name="idCompetition" ColumnName="idCompetition" />
+                <ScalarProperty Name="classement" ColumnName="classement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Arbitrer" TypeName="escrimeModel.Arbitrer" StoreEntitySet="Arbitrer">
+            <EndProperty Name="Competition">
+              <ScalarProperty Name="id" ColumnName="idCompetition" />
+            </EndProperty>
+            <EndProperty Name="MaitreArme">
+              <ScalarProperty Name="id" ColumnName="idMaitreArme" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="armer" TypeName="escrimeModel.armer" StoreEntitySet="armer">
+            <EndProperty Name="Adherent">
+              <ScalarProperty Name="id" ColumnName="idAdherent" />
+            </EndProperty>
+            <EndProperty Name="arme">
+              <ScalarProperty Name="id" ColumnName="idArme" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

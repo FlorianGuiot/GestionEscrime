@@ -39,5 +39,12 @@ namespace GestionEscrime
         {
 
         }
+
+        private void ButtonCompetition_Click(object sender, EventArgs e)
+        {
+            Frm_competition form2 = new Frm_competition();
+            form2.Show();
+
+        }
     }
 }

@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +64,18 @@
     <Compile Include="Acceuil.Designer.cs">
       <DependentUpon>Acceuil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adherent.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
+    <Compile Include="arme.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Club.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Competition.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
     <Compile Include="Frm_competition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +87,27 @@
     </Compile>
     <Compile Include="Frm_club.Designer.cs">
       <DependentUpon>Frm_club.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaitreArme.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEscrime.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEscrime.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEscrime.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelEscrime.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEscrime.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Participer.cs">
+      <DependentUpon>ModelEscrime.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,7 +129,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="ModelEscrime.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelEscrime.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelEscrime.edmx.diagram">
+      <DependentUpon>ModelEscrime.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Adherent.datasource" />
+    <None Include="Properties\DataSources\arme.datasource" />
+    <None Include="Properties\DataSources\Club.datasource" />
+    <None Include="Properties\DataSources\Competition.datasource" />
+    <None Include="Properties\DataSources\MaitreArme.datasource" />
+    <None Include="Properties\DataSources\Participer.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,6 +156,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelEscrime.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelEscrime.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEscrime.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelEscrime.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelEscrime.edmx</DependentUpon>
+      <LastGenOutput>ModelEscrime.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

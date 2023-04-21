@@ -51,6 +51,7 @@
             this.ButtonCompetition.TabIndex = 2;
             this.ButtonCompetition.Text = "Acceder aux compétitions";
             this.ButtonCompetition.UseVisualStyleBackColor = true;
+            this.ButtonCompetition.Click += new System.EventHandler(this.ButtonCompetition_Click);
             // 
             // label1
             // 
