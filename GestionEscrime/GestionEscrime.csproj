@@ -76,6 +76,11 @@
     <Compile Include="Competition.cs">
       <DependentUpon>ModelEscrime.tt</DependentUpon>
     </Compile>
+    <Compile Include="escrimeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>escrimeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Frm_competition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,16 +138,21 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelEscrime.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="escrimeDataSet.xsc">
+      <DependentUpon>escrimeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="escrimeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>escrimeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="escrimeDataSet.xss">
+      <DependentUpon>escrimeDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ModelEscrime.edmx.diagram">
       <DependentUpon>ModelEscrime.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\Adherent.datasource" />
-    <None Include="Properties\DataSources\arme.datasource" />
-    <None Include="Properties\DataSources\Club.datasource" />
-    <None Include="Properties\DataSources\Competition.datasource" />
-    <None Include="Properties\DataSources\MaitreArme.datasource" />
-    <None Include="Properties\DataSources\Participer.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,7 +184,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
