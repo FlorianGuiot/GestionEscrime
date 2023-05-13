@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using GestionEscrime;
 using System.Reflection.Emit;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace GestionEscrime
 {
@@ -75,6 +76,14 @@ namespace GestionEscrime
         /// <param name="row"></param>
         private void updateCompetitionRowCells(DataGridViewRow row)
         {
+
+            if (this.nouveau)
+            {
+                ((Competition)competitionBindingSource.Current).arme = ((arme)armeComboBox.SelectedItem);
+                ((Competition)competitionBindingSource.Current).Club = ((Club)clubComboBox1.SelectedItem);
+
+            }
+
             Competition competition = row.DataBoundItem as Competition;
             if (competition != null)
             {
@@ -158,6 +167,7 @@ namespace GestionEscrime
 
         private void btn_supprimer_Click(object sender, EventArgs e)
         {
+            //Bouton annuler ajout
             if (this.nouveau)
             {
                 this.nouveau = false;
@@ -167,6 +177,39 @@ namespace GestionEscrime
 
                 //Change le text des boutons
                 resetCompetitionBtnText();
+
+            }
+            else //Bouton supprimer
+            {
+
+                try
+                {
+                    //Confirmation
+                    if(MessageBox.Show("êtes vous sur de vouloir supprimer cette compétition ?", "Supprimer la compétition",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        //Suppression en bdd
+                        context.Competitions.Remove((Competition)competitionBindingSource.Current);
+                        context.SaveChanges();
+
+                        //Suppression dans le binding source
+                        competitionBindingSource.RemoveCurrent();
+
+
+                        MessageBox.Show("Compétition Supprimée !");
+
+                    }
+
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
 
             }
             
@@ -218,5 +261,61 @@ namespace GestionEscrime
             }
         }
 
+        private void tabControlCompet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabControlCompet_Selected(object sender, TabControlEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private void tabParticipants_Enter(object sender, EventArgs e)
+        {
+
+            //Récupération de la liste des participants
+            Competition laCompetition = (Competition)competitionBindingSource.Current;
+            ICollection<Participer> participerList = laCompetition.Participers;
+
+            List<Adherent> lesParticipants = new List<Adherent>();
+
+            foreach(Participer uneParticipation in participerList)
+            {
+                lesParticipants.Add(uneParticipation.Adherent);
+            }
+
+
+            //Ajout de la liste des participants au bindingsource
+            adherentBindingSource.DataSource = lesParticipants;
+
+
+            //Récupère la liste des adherent dans la base de donnée et ajoute la liste a la combobox
+            List<Adherent> tousLesAdherents = context.Adherents.Local.ToList(); //Adherent et maitre d'arme
+
+            //Selectionne uniquement les simple adherents
+            List<Adherent> lesAdherents = (from adherent in tousLesAdherents.Except(lesParticipants)
+                                              where adherent.MaitreArme == null 
+                                           select adherent).ToList();
+
+            participantComboBox.DataSource = lesAdherents;
+
+            
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
