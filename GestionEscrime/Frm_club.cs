@@ -50,12 +50,15 @@ namespace GestionEscrime
             context = new escrimeEntities();
             context.Clubs.Load();
             context.armes.Load();
+            context.Adherents.Load();
 
             List<Club> lesClubs = context.Clubs.Local.ToList();
             List<arme> lesarmes = context.armes.Local.ToList();
+            List<Adherent> lesAdherents = context.Adherents.ToList();
 
             clubBindingSource.DataSource = lesClubs;
-            armeBindingSource.DataSource = lesarmes; 
+            armeBindingSource.DataSource = lesarmes;
+            adherentBindingSource.DataSource = lesAdherents;
             
 
         }
@@ -130,6 +133,11 @@ namespace GestionEscrime
         }
 
         private void dataGridView_Armes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ConfirmerAdherent_Click(object sender, EventArgs e)
         {
 
         }
