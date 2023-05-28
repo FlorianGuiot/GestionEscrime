@@ -69,9 +69,7 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Responsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabClassement = new System.Windows.Forms.TabPage();
-            this.btn_annuler_classement_modif = new System.Windows.Forms.Button();
             this.classementTextBox = new System.Windows.Forms.TextBox();
-            this.btn_supprimer_classement = new System.Windows.Forms.Button();
             this.btn_ajouter_classement = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -115,7 +113,6 @@
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -152,6 +149,10 @@
             this.dataGridViewTextBoxColumn74 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn75 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn76 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn77 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn78 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn79 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn80 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.competitionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,11 +161,7 @@
             this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateNaissanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.licenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idClubDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clubDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maitreArmeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.participersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.armesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adherentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adherentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -172,11 +169,7 @@
             this.maitreArmeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.participerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idAdherentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCompetitionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.classementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adherentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.competitionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             armeLabel = new System.Windows.Forms.Label();
             dateLabel = new System.Windows.Forms.Label();
             clubLabel1 = new System.Windows.Forms.Label();
@@ -476,11 +469,7 @@
             this.prenomDataGridViewTextBoxColumn,
             this.dateNaissanceDataGridViewTextBoxColumn,
             this.licenceDataGridViewTextBoxColumn,
-            this.idClubDataGridViewTextBoxColumn,
-            this.clubDataGridViewTextBoxColumn,
-            this.maitreArmeDataGridViewTextBoxColumn,
-            this.participersDataGridViewTextBoxColumn,
-            this.armesDataGridViewTextBoxColumn});
+            this.clubDataGridViewTextBoxColumn});
             this.adherentDataGridView.DataSource = this.adherentBindingSource;
             this.adherentDataGridView.Dock = System.Windows.Forms.DockStyle.Left;
             this.adherentDataGridView.Location = new System.Drawing.Point(3, 2);
@@ -699,10 +688,8 @@
             // tabClassement
             // 
             this.tabClassement.AutoScroll = true;
-            this.tabClassement.Controls.Add(this.btn_annuler_classement_modif);
             this.tabClassement.Controls.Add(classementLabel);
             this.tabClassement.Controls.Add(this.classementTextBox);
-            this.tabClassement.Controls.Add(this.btn_supprimer_classement);
             this.tabClassement.Controls.Add(this.btn_ajouter_classement);
             this.tabClassement.Controls.Add(this.label4);
             this.tabClassement.Controls.Add(this.dataGridView4);
@@ -716,17 +703,6 @@
             this.tabClassement.UseVisualStyleBackColor = true;
             this.tabClassement.Enter += new System.EventHandler(this.tabClassement_Enter);
             // 
-            // btn_annuler_classement_modif
-            // 
-            this.btn_annuler_classement_modif.Location = new System.Drawing.Point(1249, 392);
-            this.btn_annuler_classement_modif.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_annuler_classement_modif.Name = "btn_annuler_classement_modif";
-            this.btn_annuler_classement_modif.Size = new System.Drawing.Size(168, 54);
-            this.btn_annuler_classement_modif.TabIndex = 21;
-            this.btn_annuler_classement_modif.Text = "Annuler la modification";
-            this.btn_annuler_classement_modif.UseVisualStyleBackColor = true;
-
-            // 
             // classementTextBox
             // 
             this.classementTextBox.AcceptsReturn = true;
@@ -736,20 +712,6 @@
             this.classementTextBox.Name = "classementTextBox";
             this.classementTextBox.Size = new System.Drawing.Size(100, 22);
             this.classementTextBox.TabIndex = 20;
-            // 
-            // btn_supprimer_classement
-            // 
-            this.btn_supprimer_classement.BackColor = System.Drawing.Color.Red;
-            this.btn_supprimer_classement.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_supprimer_classement.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_supprimer_classement.Location = new System.Drawing.Point(1445, 334);
-            this.btn_supprimer_classement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_supprimer_classement.Name = "btn_supprimer_classement";
-            this.btn_supprimer_classement.Size = new System.Drawing.Size(168, 54);
-            this.btn_supprimer_classement.TabIndex = 19;
-            this.btn_supprimer_classement.Text = "Supprimer la position";
-            this.btn_supprimer_classement.UseVisualStyleBackColor = false;
-
             // 
             // btn_ajouter_classement
             // 
@@ -784,12 +746,7 @@
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
-            this.Column1,
-            this.idAdherentDataGridViewTextBoxColumn,
-            this.idCompetitionDataGridViewTextBoxColumn,
-            this.classementDataGridViewTextBoxColumn,
-            this.adherentDataGridViewTextBoxColumn1,
-            this.competitionDataGridViewTextBoxColumn});
+            this.Column1});
             this.dataGridView4.DataSource = this.participerBindingSource;
             this.dataGridView4.Location = new System.Drawing.Point(3, 2);
             this.dataGridView4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1159,14 +1116,6 @@
             this.dataGridViewTextBoxColumn40.ReadOnly = true;
             this.dataGridViewTextBoxColumn40.Width = 434;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Classement";
-            this.Column1.HeaderText = "Position";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn41
             // 
             this.dataGridViewTextBoxColumn41.DataPropertyName = "Club";
@@ -1489,6 +1438,40 @@
             this.dataGridViewTextBoxColumn76.ReadOnly = true;
             this.dataGridViewTextBoxColumn76.Width = 434;
             // 
+            // dataGridViewTextBoxColumn77
+            // 
+            this.dataGridViewTextBoxColumn77.DataPropertyName = "Club";
+            this.dataGridViewTextBoxColumn77.HeaderText = "Club";
+            this.dataGridViewTextBoxColumn77.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn77.Name = "dataGridViewTextBoxColumn77";
+            this.dataGridViewTextBoxColumn77.Width = 316;
+            // 
+            // dataGridViewTextBoxColumn78
+            // 
+            this.dataGridViewTextBoxColumn78.DataPropertyName = "Adherent";
+            this.dataGridViewTextBoxColumn78.HeaderText = "Participant";
+            this.dataGridViewTextBoxColumn78.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn78.Name = "dataGridViewTextBoxColumn78";
+            this.dataGridViewTextBoxColumn78.Width = 434;
+            // 
+            // dataGridViewTextBoxColumn79
+            // 
+            this.dataGridViewTextBoxColumn79.DataPropertyName = "Club";
+            this.dataGridViewTextBoxColumn79.HeaderText = "Club";
+            this.dataGridViewTextBoxColumn79.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn79.Name = "dataGridViewTextBoxColumn79";
+            this.dataGridViewTextBoxColumn79.ReadOnly = true;
+            this.dataGridViewTextBoxColumn79.Width = 317;
+            // 
+            // dataGridViewTextBoxColumn80
+            // 
+            this.dataGridViewTextBoxColumn80.DataPropertyName = "Adherent";
+            this.dataGridViewTextBoxColumn80.HeaderText = "Participant";
+            this.dataGridViewTextBoxColumn80.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn80.Name = "dataGridViewTextBoxColumn80";
+            this.dataGridViewTextBoxColumn80.ReadOnly = true;
+            this.dataGridViewTextBoxColumn80.Width = 434;
+            // 
             // competitionBindingSource
             // 
             this.competitionBindingSource.DataSource = typeof(GestionEscrime.Competition);
@@ -1549,14 +1532,6 @@
             this.licenceDataGridViewTextBoxColumn.Name = "licenceDataGridViewTextBoxColumn";
             this.licenceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idClubDataGridViewTextBoxColumn
-            // 
-            this.idClubDataGridViewTextBoxColumn.DataPropertyName = "idClub";
-            this.idClubDataGridViewTextBoxColumn.HeaderText = "idClub";
-            this.idClubDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idClubDataGridViewTextBoxColumn.Name = "idClubDataGridViewTextBoxColumn";
-            this.idClubDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // clubDataGridViewTextBoxColumn
             // 
             this.clubDataGridViewTextBoxColumn.DataPropertyName = "Club";
@@ -1564,30 +1539,6 @@
             this.clubDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.clubDataGridViewTextBoxColumn.Name = "clubDataGridViewTextBoxColumn";
             this.clubDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maitreArmeDataGridViewTextBoxColumn
-            // 
-            this.maitreArmeDataGridViewTextBoxColumn.DataPropertyName = "MaitreArme";
-            this.maitreArmeDataGridViewTextBoxColumn.HeaderText = "MaitreArme";
-            this.maitreArmeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.maitreArmeDataGridViewTextBoxColumn.Name = "maitreArmeDataGridViewTextBoxColumn";
-            this.maitreArmeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // participersDataGridViewTextBoxColumn
-            // 
-            this.participersDataGridViewTextBoxColumn.DataPropertyName = "Participers";
-            this.participersDataGridViewTextBoxColumn.HeaderText = "Participers";
-            this.participersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.participersDataGridViewTextBoxColumn.Name = "participersDataGridViewTextBoxColumn";
-            this.participersDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // armesDataGridViewTextBoxColumn
-            // 
-            this.armesDataGridViewTextBoxColumn.DataPropertyName = "armes";
-            this.armesDataGridViewTextBoxColumn.HeaderText = "armes";
-            this.armesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.armesDataGridViewTextBoxColumn.Name = "armesDataGridViewTextBoxColumn";
-            this.armesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // adherentBindingSource
             // 
@@ -1633,45 +1584,13 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // idAdherentDataGridViewTextBoxColumn
+            // Column1
             // 
-            this.idAdherentDataGridViewTextBoxColumn.DataPropertyName = "idAdherent";
-            this.idAdherentDataGridViewTextBoxColumn.HeaderText = "idAdherent";
-            this.idAdherentDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idAdherentDataGridViewTextBoxColumn.Name = "idAdherentDataGridViewTextBoxColumn";
-            this.idAdherentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idCompetitionDataGridViewTextBoxColumn
-            // 
-            this.idCompetitionDataGridViewTextBoxColumn.DataPropertyName = "idCompetition";
-            this.idCompetitionDataGridViewTextBoxColumn.HeaderText = "idCompetition";
-            this.idCompetitionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idCompetitionDataGridViewTextBoxColumn.Name = "idCompetitionDataGridViewTextBoxColumn";
-            this.idCompetitionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // classementDataGridViewTextBoxColumn
-            // 
-            this.classementDataGridViewTextBoxColumn.DataPropertyName = "classement";
-            this.classementDataGridViewTextBoxColumn.HeaderText = "classement";
-            this.classementDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.classementDataGridViewTextBoxColumn.Name = "classementDataGridViewTextBoxColumn";
-            this.classementDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adherentDataGridViewTextBoxColumn1
-            // 
-            this.adherentDataGridViewTextBoxColumn1.DataPropertyName = "Adherent";
-            this.adherentDataGridViewTextBoxColumn1.HeaderText = "Adherent";
-            this.adherentDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.adherentDataGridViewTextBoxColumn1.Name = "adherentDataGridViewTextBoxColumn1";
-            this.adherentDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // competitionDataGridViewTextBoxColumn
-            // 
-            this.competitionDataGridViewTextBoxColumn.DataPropertyName = "Competition";
-            this.competitionDataGridViewTextBoxColumn.HeaderText = "Competition";
-            this.competitionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.competitionDataGridViewTextBoxColumn.Name = "competitionDataGridViewTextBoxColumn";
-            this.competitionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Column1.DataPropertyName = "Classement";
+            this.Column1.HeaderText = "Position";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Frm_competition
             // 
@@ -1730,7 +1649,6 @@
         private System.Windows.Forms.Button btn_ajouter_maitre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button btn_supprimer_classement;
         private System.Windows.Forms.Button btn_ajouter_classement;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource competitionBindingSource;
@@ -1788,16 +1706,6 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.BindingSource participerBindingSource;
         private System.Windows.Forms.TextBox classementTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateNaissanceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn licenceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idClubDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clubDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maitreArmeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn participersDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn armesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
@@ -1808,18 +1716,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
-        private System.Windows.Forms.Button btn_annuler_classement_modif;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idAdherentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCompetitionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn classementDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adherentDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn competitionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
@@ -1856,5 +1756,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn74;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn75;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn76;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prenomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateNaissanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn licenceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clubDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn77;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn78;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn79;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn80;
     }
 }
