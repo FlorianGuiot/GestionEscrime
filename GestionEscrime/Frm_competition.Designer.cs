@@ -725,7 +725,7 @@
             this.btn_annuler_classement_modif.TabIndex = 21;
             this.btn_annuler_classement_modif.Text = "Annuler la modification";
             this.btn_annuler_classement_modif.UseVisualStyleBackColor = true;
-            this.btn_annuler_classement_modif.Click += new System.EventHandler(this.btn_annuler_classement_modif_Click);
+
             // 
             // classementTextBox
             // 
@@ -749,7 +749,7 @@
             this.btn_supprimer_classement.TabIndex = 19;
             this.btn_supprimer_classement.Text = "Supprimer la position";
             this.btn_supprimer_classement.UseVisualStyleBackColor = false;
-            this.btn_supprimer_classement.Click += new System.EventHandler(this.btn_supprimer_classement_Click);
+
             // 
             // btn_ajouter_classement
             // 
