@@ -70,6 +70,10 @@
     <Compile Include="arme.cs">
       <DependentUpon>ModelEscrime.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class\ParticiperSuite.cs" />
+    <Compile Include="Class\MaitreArmeSuite.cs" />
+    <Compile Include="Class\AdherentSuite.cs" />
+    <Compile Include="Class\ClubSuite.cs" />
     <Compile Include="Club.cs">
       <DependentUpon>ModelEscrime.tt</DependentUpon>
     </Compile>
