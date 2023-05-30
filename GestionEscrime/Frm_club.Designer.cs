@@ -31,18 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Clubs = new System.Windows.Forms.TabPage();
+            this.ville_textBox = new System.Windows.Forms.TextBox();
+            this.clubBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.escrimeDataSet = new GestionEscrime.escrimeDataSet();
             this.SupprimerClub = new System.Windows.Forms.Button();
             this.ModifClub = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.clubBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.escrimeDataSet = new GestionEscrime.escrimeDataSet();
             this.AnnulerClub = new System.Windows.Forms.Button();
             this.ConfirmerClub = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.AjoutClub = new System.Windows.Forms.Button();
-            this.club_textBox = new System.Windows.Forms.TextBox();
             this.dataGridView_Clubs = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,16 +77,19 @@
             this.AjoutArmes = new System.Windows.Forms.Button();
             this.SupprimerArmes = new System.Windows.Forms.Button();
             this.ModifierArmes = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.armeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView_Armes = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.libelleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.armeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clubTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.ClubTableAdapter();
             this.tableAdapterManager = new GestionEscrime.escrimeDataSetTableAdapters.TableAdapterManager();
             this.adherentTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.AdherentTableAdapter();
             this.armeTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.armeTableAdapter();
+            this.armerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.armerTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.armerTableAdapter();
+            this.club_textBox = new System.Windows.Forms.TextBox();
+            this.arme_textBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Clubs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clubBindingSource)).BeginInit();
@@ -97,8 +99,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -115,11 +118,11 @@
             // 
             // Clubs
             // 
+            this.Clubs.Controls.Add(this.ville_textBox);
             this.Clubs.Controls.Add(this.SupprimerClub);
             this.Clubs.Controls.Add(this.ModifClub);
             this.Clubs.Controls.Add(this.label5);
             this.Clubs.Controls.Add(this.label4);
-            this.Clubs.Controls.Add(this.textBox1);
             this.Clubs.Controls.Add(this.AnnulerClub);
             this.Clubs.Controls.Add(this.ConfirmerClub);
             this.Clubs.Controls.Add(this.label1);
@@ -134,6 +137,26 @@
             this.Clubs.TabIndex = 0;
             this.Clubs.Text = "Clubs";
             this.Clubs.UseVisualStyleBackColor = true;
+            // 
+            // ville_textBox
+            // 
+            this.ville_textBox.CausesValidation = false;
+            this.ville_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "ville", true));
+            this.ville_textBox.Location = new System.Drawing.Point(664, 114);
+            this.ville_textBox.Name = "ville_textBox";
+            this.ville_textBox.Size = new System.Drawing.Size(238, 22);
+            this.ville_textBox.TabIndex = 13;
+            this.ville_textBox.TextChanged += new System.EventHandler(this.ville_textBox_TextChanged);
+            // 
+            // clubBindingSource
+            // 
+            this.clubBindingSource.DataMember = "Club";
+            this.clubBindingSource.DataSource = this.escrimeDataSet;
+            // 
+            // escrimeDataSet
+            // 
+            this.escrimeDataSet.DataSetName = "escrimeDataSet";
+            this.escrimeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // SupprimerClub
             // 
@@ -177,6 +200,7 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Nom :";
             // 
+
             // textBox1
             // 
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "ville", true));
@@ -196,6 +220,7 @@
             this.escrimeDataSet.DataSetName = "escrimeDataSet";
             this.escrimeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+
             // AnnulerClub
             // 
             this.AnnulerClub.BackColor = System.Drawing.Color.Red;
@@ -244,6 +269,7 @@
             this.AjoutClub.UseVisualStyleBackColor = true;
             this.AjoutClub.Click += new System.EventHandler(this.AjoutClub_Click);
             // 
+
             // club_textBox
             // 
             this.club_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "nom", true));
@@ -254,6 +280,7 @@
             this.club_textBox.TabIndex = 1;
             this.club_textBox.TextChanged += new System.EventHandler(this.club_textBox_TextChanged);
             // 
+
             // dataGridView_Clubs
             // 
             this.dataGridView_Clubs.AutoGenerateColumns = false;
@@ -268,7 +295,10 @@
             this.dataGridView_Clubs.Name = "dataGridView_Clubs";
             this.dataGridView_Clubs.RowHeadersWidth = 51;
             this.dataGridView_Clubs.RowTemplate.Height = 24;
-            this.dataGridView_Clubs.Size = new System.Drawing.Size(413, 332);
+
+            this.dataGridView_Clubs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_Clubs.Size = new System.Drawing.Size(551, 409);
+
             this.dataGridView_Clubs.TabIndex = 0;
             this.dataGridView_Clubs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Clubs_CellContentClick);
             // 
@@ -299,6 +329,7 @@
             // 
             // Adherent
             // 
+
             this.Adherent.Controls.Add(this.comboClub);
             this.Adherent.Controls.Add(this.dateTimeAdherent);
             this.Adherent.Controls.Add(this.lblAdherentLicence);
@@ -307,6 +338,7 @@
             this.Adherent.Controls.Add(this.lblAdherentNom);
             this.Adherent.Controls.Add(this.txtBoxAdherentLicence);
             this.Adherent.Controls.Add(this.txtBoxAdherentPrenom);
+
             this.Adherent.Controls.Add(this.SLclub_textBox);
             this.Adherent.Controls.Add(this.ConfirmerAdherent);
             this.Adherent.Controls.Add(this.AnnulerAdherent);
@@ -506,8 +538,12 @@
             this.dataGridView_Adherent.Name = "dataGridView_Adherent";
             this.dataGridView_Adherent.RowHeadersWidth = 51;
             this.dataGridView_Adherent.RowTemplate.Height = 24;
-            this.dataGridView_Adherent.Size = new System.Drawing.Size(413, 332);
+
+            this.dataGridView_Adherent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_Adherent.Size = new System.Drawing.Size(551, 409);
+
             this.dataGridView_Adherent.TabIndex = 0;
+            this.dataGridView_Adherent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Adherent_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -548,7 +584,7 @@
             this.tabPage3.Controls.Add(this.AjoutArmes);
             this.tabPage3.Controls.Add(this.SupprimerArmes);
             this.tabPage3.Controls.Add(this.ModifierArmes);
-            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.arme_textBox);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.dataGridView_Armes);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -559,6 +595,7 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Armes";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // adherent_comboBox
             // 
@@ -582,6 +619,7 @@
             this.AnnulerArmes.TabIndex = 7;
             this.AnnulerArmes.Text = "Annuler";
             this.AnnulerArmes.UseVisualStyleBackColor = false;
+            this.AnnulerArmes.Click += new System.EventHandler(this.AnnulerArmes_Click);
             // 
             // ConfirmerArmes
             // 
@@ -592,6 +630,7 @@
             this.ConfirmerArmes.TabIndex = 6;
             this.ConfirmerArmes.Text = "Confirmer";
             this.ConfirmerArmes.UseVisualStyleBackColor = true;
+            this.ConfirmerArmes.Click += new System.EventHandler(this.ConfirmerArmes_Click);
             // 
             // AjoutArmes
             // 
@@ -602,6 +641,7 @@
             this.AjoutArmes.TabIndex = 5;
             this.AjoutArmes.Text = "Ajouter";
             this.AjoutArmes.UseVisualStyleBackColor = true;
+            this.AjoutArmes.Click += new System.EventHandler(this.AjoutArmes_Click);
             // 
             // SupprimerArmes
             // 
@@ -612,6 +652,7 @@
             this.SupprimerArmes.TabIndex = 4;
             this.SupprimerArmes.Text = "Supprimer";
             this.SupprimerArmes.UseVisualStyleBackColor = true;
+            this.SupprimerArmes.Click += new System.EventHandler(this.SupprimerArmes_Click);
             // 
             // ModifierArmes
             // 
@@ -622,14 +663,23 @@
             this.ModifierArmes.TabIndex = 3;
             this.ModifierArmes.Text = "Modifier";
             this.ModifierArmes.UseVisualStyleBackColor = true;
+            this.ModifierArmes.Click += new System.EventHandler(this.ModifierArmes_Click);
             // 
-            // textBox4
+            // armeBindingSource
             // 
+
+
+
+
+            this.armeBindingSource.DataMember = "arme";
+            this.armeBindingSource.DataSource = this.escrimeDataSet;
+
             this.textBox4.Location = new System.Drawing.Point(498, 44);
             this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(180, 20);
             this.textBox4.TabIndex = 2;
+
             // 
             // label3
             // 
@@ -676,11 +726,6 @@
             this.libelleDataGridViewTextBoxColumn.Name = "libelleDataGridViewTextBoxColumn";
             this.libelleDataGridViewTextBoxColumn.Width = 125;
             // 
-            // armeBindingSource
-            // 
-            this.armeBindingSource.DataMember = "arme";
-            this.armeBindingSource.DataSource = this.escrimeDataSet;
-            // 
             // clubTableAdapter
             // 
             this.clubTableAdapter.ClearBeforeFill = true;
@@ -706,6 +751,35 @@
             // 
             this.armeTableAdapter.ClearBeforeFill = true;
             // 
+            // armerBindingSource
+            // 
+            this.armerBindingSource.DataMember = "armer";
+            this.armerBindingSource.DataSource = this.escrimeDataSet;
+            // 
+            // armerTableAdapter
+            // 
+            this.armerTableAdapter.ClearBeforeFill = true;
+            // 
+            // club_textBox
+            // 
+            this.club_textBox.CausesValidation = false;
+            this.club_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "nom", true));
+            this.club_textBox.Location = new System.Drawing.Point(664, 54);
+            this.club_textBox.Name = "club_textBox";
+            this.club_textBox.Size = new System.Drawing.Size(238, 22);
+            this.club_textBox.TabIndex = 1;
+            this.club_textBox.TextChanged += new System.EventHandler(this.club_textBox_TextChanged);
+            // 
+            // arme_textBox
+            // 
+            this.arme_textBox.CausesValidation = false;
+            this.arme_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.armeBindingSource, "libelle", true));
+            this.arme_textBox.Location = new System.Drawing.Point(664, 54);
+            this.arme_textBox.Name = "arme_textBox";
+            this.arme_textBox.Size = new System.Drawing.Size(238, 22);
+            this.arme_textBox.TabIndex = 2;
+            this.arme_textBox.TextChanged += new System.EventHandler(this.arme_textBox_TextChanged);
+            // 
             // Frm_club
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,8 +802,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -740,7 +815,6 @@
         private System.Windows.Forms.TabPage Clubs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button AjoutClub;
-        private System.Windows.Forms.TextBox club_textBox;
         private System.Windows.Forms.DataGridView dataGridView_Clubs;
         private System.Windows.Forms.TabPage Adherent;
         private System.Windows.Forms.TextBox txtBoxAdherentNom;
@@ -763,7 +837,6 @@
         private System.Windows.Forms.Button AjoutArmes;
         private System.Windows.Forms.Button SupprimerArmes;
         private System.Windows.Forms.Button ModifierArmes;
-        private System.Windows.Forms.TextBox textBox4;
         private escrimeDataSet escrimeDataSet;
         private System.Windows.Forms.BindingSource clubBindingSource;
         private escrimeDataSetTableAdapters.ClubTableAdapter clubTableAdapter;
@@ -778,9 +851,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn villeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button ModifClub;
         private System.Windows.Forms.Button SupprimerClub;
+
+        private System.Windows.Forms.BindingSource armerBindingSource;
+        private escrimeDataSetTableAdapters.armerTableAdapter armerTableAdapter;
+        private System.Windows.Forms.TextBox ville_textBox;
+        private System.Windows.Forms.TextBox club_textBox;
+        private System.Windows.Forms.TextBox arme_textBox;
+
         private System.Windows.Forms.BindingSource adherentBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn1;
@@ -795,5 +874,6 @@
         private System.Windows.Forms.Label lblAdherentPrenom;
         private System.Windows.Forms.DateTimePicker dateTimeAdherent;
         private System.Windows.Forms.ComboBox comboClub;
+
     }
 }
