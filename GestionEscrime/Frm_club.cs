@@ -198,11 +198,7 @@ namespace GestionEscrime
         }
 
 
-        private void adherent_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-
-        }
 
 
 
@@ -383,12 +379,11 @@ namespace GestionEscrime
         }
 
         private void arme_textBox_TextChanged(object sender, EventArgs e)
-        {
+        { }
 
         private void adherent_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedAdherentId = (int)adherent_comboBox.SelectedValue;
-            ((BindingSource)dataGridView_Armes.DataSource).Filter = $"id_adherent = {selectedAdherentId}";
+
         }
 
         private void tabPage3_Enter(object sender, EventArgs e)
