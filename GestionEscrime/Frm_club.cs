@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace GestionEscrime
 {
     public partial class Frm_club : Form
@@ -312,12 +313,6 @@ namespace GestionEscrime
             {
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void dataGridView_Clubs_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
 

@@ -199,16 +199,7 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Nom :";
-            // 
-
-            // textBox1
-            // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "ville", true));
-            this.textBox1.Location = new System.Drawing.Point(498, 88);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 8;
+           
             // 
             // clubBindingSource
             // 
@@ -268,17 +259,7 @@
             this.AjoutClub.Text = "Ajouter";
             this.AjoutClub.UseVisualStyleBackColor = true;
             this.AjoutClub.Click += new System.EventHandler(this.AjoutClub_Click);
-            // 
 
-            // club_textBox
-            // 
-            this.club_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "nom", true));
-            this.club_textBox.Location = new System.Drawing.Point(498, 44);
-            this.club_textBox.Margin = new System.Windows.Forms.Padding(2);
-            this.club_textBox.Name = "club_textBox";
-            this.club_textBox.Size = new System.Drawing.Size(180, 20);
-            this.club_textBox.TabIndex = 1;
-            this.club_textBox.TextChanged += new System.EventHandler(this.club_textBox_TextChanged);
             // 
 
             // dataGridView_Clubs
@@ -300,7 +281,7 @@
             this.dataGridView_Clubs.Size = new System.Drawing.Size(551, 409);
 
             this.dataGridView_Clubs.TabIndex = 0;
-            this.dataGridView_Clubs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Clubs_CellContentClick);
+ 
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -674,11 +655,7 @@
             this.armeBindingSource.DataMember = "arme";
             this.armeBindingSource.DataSource = this.escrimeDataSet;
 
-            this.textBox4.Location = new System.Drawing.Point(498, 44);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
-            this.textBox4.TabIndex = 2;
+
 
             // 
             // label3
