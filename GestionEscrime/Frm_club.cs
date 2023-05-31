@@ -1,8 +1,10 @@
-﻿using System;
+﻿    
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,506 +12,716 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-
 namespace GestionEscrime
-{
-    public partial class Frm_club : Form
     {
-        escrimeEntities context;
-
-
-        public Frm_club()
+        public partial class Frm_club : Form
         {
-            InitializeComponent();
-        }
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void Frm_club_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'escrimeDataSet.armer' table. You can move, or remove it, as needed.
-            this.armerTableAdapter.Fill(this.escrimeDataSet.armer);
-            // TODO: This line of code loads data into the 'escrimeDataSet.arme' table. You can move, or remove it, as needed.
-            this.armeTableAdapter.Fill(this.escrimeDataSet.arme);
-            // TODO: This line of code loads data into the 'escrimeDataSet.Adherent' table. You can move, or remove it, as needed.
-            this.adherentTableAdapter.Fill(this.escrimeDataSet.Adherent);
-            // TODO: This line of code loads data into the 'escrimeDataSet.Club' table. You can move, or remove it, as needed.
-            this.clubTableAdapter.Fill(this.escrimeDataSet.Club);
-
-            context = new escrimeEntities();
+            escrimeEntities context;
+            List<Adherent> allAdherents;
+            List<arme> lesarmes;
+            List<Club> lesClubs;
+            List<Armer> armerList;
 
 
 
 
-            context.Clubs.Load();
-            context.armes.Load();
-            context.Adherents.Load();
-
-            List<Club> lesClubs = context.Clubs.Local.ToList();
-            List<arme> lesarmes = context.armes.Local.ToList();
-
-            clubBindingSource.DataSource = lesClubs;
-
-
-            this.SetAdherentByClub((Club)clubBindingSource.Current);
-
-        }
-
-
-
-
-        private void club_textBox_TextChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-
-
-
-
-        private void ModifClub_Click(object sender, EventArgs e)
-        {
-            try
+            public Frm_club()
             {
-                // Récupérer le club sélectionné à partir de la source de données
-                Club clubSelectionne = (Club)clubBindingSource.Current;
-
-                // Modifier les propriétés du club sélectionné
-                clubSelectionne.nom = club_textBox.Text;
-                clubSelectionne.ville = ville_textBox.Text;
-                // Ajoutez d'autres modifications selon vos besoins
-
-                // Enregistrer les modifications dans la base de données en utilisant l'instance de contexte existante
-                dataGridView_Clubs.Refresh();
-
-                MessageBox.Show("Club mis à jour avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void AjoutClub_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Créer une nouvelle instance de Club
-                Club nouveauClub = new Club();
-
-                // Remplir les propriétés du nouveau club avec les valeurs des TextBox
-                nouveauClub.nom = club_textBox.Text;
-                nouveauClub.ville = ville_textBox.Text;
-
-                // Ajouter le nouveau club à la liste des clubs dans le BindingSource
-                clubBindingSource.Add(nouveauClub);
-
-                // Ajouter le nouveau club à la liste des clubs dans le contexte
-                context.Clubs.Add(nouveauClub);
-
-                // Enregistrer les modifications dans la base de données en utilisant l'instance de contexte existante
-                //context.SaveChanges();
-
-                MessageBox.Show("Nouveau Club créé.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-
-
-
-
-        private void ConfirmerClub_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                clubBindingSource.EndEdit();
-
-                // Enregistrer les modifications dans la base de données
-                context.SaveChanges();
-
-                dataGridView_Clubs.Refresh();
-
-                MessageBox.Show("Modifications enregistrées avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-        private void AnnulerClub_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                clubBindingSource.CancelEdit();
-                clubBindingSource.ResetBindings(true);
-
-                dataGridView_Clubs.Refresh();
-
-                MessageBox.Show("Modifications annulées avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void SupprimerClub_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Voulez-vous réellement supprimer ce Club ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                // Récupérer le club sélectionné à partir de la source de données
-                Club clubSelectionne = (Club)clubBindingSource.Current;
-
-                // Supprimer le club de la liste des clubs dans le BindingSource
-                clubBindingSource.Remove(clubSelectionne);
-
-                // Supprimer le club de la base de données
-                context.Clubs.Remove(clubSelectionne);
-
-                // Enregistrer les modifications dans la base de données
-
-
-                MessageBox.Show("Club supprimé avec succès.");
-            }
-        }
-
-
-
-
-
-
-        private void dataGridView_Armes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView_Adherent_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void ModifierArmes_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                armeBindingSource.EndEdit();
-
-                // Instanciation de la classe DbContext
-                escrimeEntities bd = new escrimeEntities();
-
-                bd.SaveChanges();
-
-                string message = "Arme mis à jour";
-                string title = "Information";
-                MessageBox.Show(message, title);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-
-        private void AjoutArmes_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-
-                // Créer une nouvelle instance d'arme
-                arme nouvelleArme = new arme();
-
-                // Remplir les propriétés de la nouvelle arme avec les valeurs des TextBox
-                nouvelleArme.libelle = arme_textBox.Text;
-
-                // Ajouter la nouvelle arme à la liste des armes dans le contexte
-                armeBindingSource.Add(nouvelleArme);
-
-                // Enregistrer les modifications dans la base de données
-                context.armes.Add(nouvelleArme);
-
-                // Actualiser la table associée à l'arme
-                dataGridView_Armes.Refresh();
-
-                MessageBox.Show("Nouvelle arme ajoutée.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                InitializeComponent();
             }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-
-
-
-        private void SupprimerArmes_Click(object sender, EventArgs e)
-        {
-            try
+            private void label1_Click(object sender, EventArgs e)
             {
-                if (MessageBox.Show("Voulez-vous réellement supprimer cette arme ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+
+            }
+
+            private void label3_Click(object sender, EventArgs e)
+            {
+
+            }
+
+
+
+            private void Frm_club_Load(object sender, EventArgs e)
+            {
+                // TODO: This line of code loads data into the 'escrimeDataSet.armer' table. You can move, or remove it, as needed.
+                this.armerTableAdapter.Fill(this.escrimeDataSet.armer);
+                // TODO: This line of code loads data into the 'escrimeDataSet.arme' table. You can move, or remove it, as needed.
+                this.armeTableAdapter.Fill(this.escrimeDataSet.arme);
+                // TODO: This line of code loads data into the 'escrimeDataSet.Adherent' table. You can move, or remove it, as needed.
+                this.adherentTableAdapter.Fill(this.escrimeDataSet.Adherent);
+                // TODO: This line of code loads data into the 'escrimeDataSet.Club' table. You can move, or remove it, as needed.
+                this.clubTableAdapter.Fill(this.escrimeDataSet.Club);
+
+                context = new escrimeEntities();
+
+                armerList = new List<Armer>();
+
+
+                this.armerBindingSource.DataSource = this.escrimeDataSet.armer;
+
+                // ...
+                this.dataGridView_Armes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Armes_CellContentClick);
+                // ...
+
+
+                context.Clubs.Load();
+                context.armes.Load();
+            
+
+                context.Adherents.Load();
+            
+
+           
+
+                lesClubs = context.Clubs.Local.ToList();
+                lesarmes = context.armes.Local.ToList();
+
+                //Selectionne uniquement les simple adherents, qui sont participant
+                allAdherents = (from adherent in context.Adherents.Local.ToList()
+                                where adherent.MaitreArme == null
+                                select adherent).ToList();
+                foreach (DataRowView armerRowView in armerBindingSource)
                 {
+                    DataRow armerRow = armerRowView.Row;
+                    int idAdherent = (int)armerRow["IdAdherent"];
+                    int idArme = (int)armerRow["IdArme"];
+
+                    Armer armer = new Armer(idAdherent, idArme);
+                    armerList.Add(armer);
+                }
+
+
+
+
+
+                clubBindingSource.DataSource = lesClubs;
+                armerBindingSource.DataSource = lesClubs;
+
+
+
+                this.SetAdherentByClub((Club)clubBindingSource.Current);
+
+                adherent_comboBox.Items.Add("Toutes Armes");
+
+                foreach (Adherent adherent in allAdherents)
+                {
+                    adherent_comboBox.Items.Add(adherent);
+                }
+
+
+                adherent_comboBox.DisplayMember = "nom";
+
+                comboBox_Lesarmes.DisplayMember = "libelle";
+
+                comboBox_Lesarmes.DataSource = context.armes.Local.ToList();
+
+
+            
+            
+
+                this.SetAdherentByClub((Club)clubBindingSource.Current);
+
+
+
+
+            }
+
+
+
+
+            private void club_textBox_TextChanged(object sender, EventArgs e)
+            {
+
+
+            }
+
+            private void clubBindingSource_CurrentChanged(object sender, EventArgs e)
+            {
+
+            }
+
+
+
+
+
+            private void ModifClub_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    // Récupérer le club sélectionné à partir de la source de données
+                    Club clubSelectionne = (Club)clubBindingSource.Current;
+
+                    // Modifier les propriétés du club sélectionné
+                    clubSelectionne.nom = club_textBox.Text;
+                    clubSelectionne.ville = ville_textBox.Text;
+                    // Ajoutez d'autres modifications selon vos besoins
+
+                    // Enregistrer les modifications dans la base de données en utilisant l'instance de contexte existante
+                    dataGridView_Clubs.Refresh();
+
+                    MessageBox.Show("Club mis à jour avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            private void AjoutClub_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    // Créer une nouvelle instance de Club
+                    Club nouveauClub = new Club();
+
+                    // Remplir les propriétés du nouveau club avec les valeurs des TextBox
+                    nouveauClub.nom = club_textBox.Text;
+                    nouveauClub.ville = ville_textBox.Text;
+
+                    // Ajouter le nouveau club à la liste des clubs dans le BindingSource
+                    clubBindingSource.Add(nouveauClub);
+
+                    // Ajouter le nouveau club à la liste des clubs dans le contexte
+                    context.Clubs.Add(nouveauClub);
+
+                    // Enregistrer les modifications dans la base de données en utilisant l'instance de contexte existante
+                    //context.SaveChanges();
+
+                    MessageBox.Show("Nouveau Club créé.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+
+
+
+
+
+
+            private void ConfirmerClub_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    clubBindingSource.EndEdit();
+
+                    // Enregistrer les modifications dans la base de données
+                    context.SaveChanges();
+
+                    dataGridView_Clubs.Refresh();
+
+                    MessageBox.Show("Modifications enregistrées avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+
+
+            private void AnnulerClub_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    clubBindingSource.CancelEdit();
+                    clubBindingSource.ResetBindings(true);
+
+                    dataGridView_Clubs.Refresh();
+
+                    MessageBox.Show("Modifications annulées avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+            private void SupprimerClub_Click(object sender, EventArgs e)
+            {
+                if (MessageBox.Show("Voulez-vous réellement supprimer ce Club ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    // Récupérer le club sélectionné à partir de la source de données
+                    Club clubSelectionne = (Club)clubBindingSource.Current;
+
+                    // Supprimer le club de la liste des clubs dans le BindingSource
+                    clubBindingSource.Remove(clubSelectionne);
+
+                    // Supprimer le club de la base de données
+                    context.Clubs.Remove(clubSelectionne);
+
+                    // Enregistrer les modifications dans la base de données
+
+
+                    MessageBox.Show("Club supprimé avec succès.");
+                }
+            }
+
+
+
+
+
+
+            private void dataGridView_Armes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            {
+                if (adherent_comboBox.SelectedItem is Adherent selectedAdherent)
+                {
+                    if (e.RowIndex >= 0 && e.RowIndex < dataGridView_Armes.Rows.Count)
+                    {
+                        DataGridViewRow row = dataGridView_Armes.Rows[e.RowIndex];
+                        if (row.Cells["libelle"].Value is arme selectedArme)
+                        {
+                            arme_textBox.Text = selectedArme.libelle;
+                        }
+                    }
+
+                }
+                else
+                {
+
+                }
+            }
+
+
+
+            private void dataGridView_Adherent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+                {
+
+                }
+
+            private void ModifierArmes_Click(object sender, EventArgs e)
+            {
+                try
+                {
+
+
+                    string newArmeName = arme_textBox.Text;
+
+                    if (string.IsNullOrEmpty(newArmeName))
+                    {
+                        MessageBox.Show("Veuillez saisir un nouveau nom pour l'arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     // Récupérer l'arme sélectionnée à partir de la source de données
                     arme armeSelectionnee = (arme)armeBindingSource.Current;
 
-                    // Supprimer l'arme de la liste des armes dans le BindingSource
-                    armeBindingSource.Remove(armeSelectionnee);
+                    // Modifier le nom de l'arme sélectionnée
+                    armeSelectionnee.libelle = newArmeName;
 
-                    // Supprimer l'arme de la base de données
-                    context.armes.Remove(armeSelectionnee);
+                    // Enregistrer les modifications dans la base de données
+                    context.SaveChanges();
+
+                    MessageBox.Show("Nom de l'arme mis à jour avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            private void AjoutArmes_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    if (adherent_comboBox.SelectedItem is string selectedItem && selectedItem == "Toutes Armes")
+                    {
+                        // Handle the case when "Toutes Armes" is selected
+                        // Create a new arme instance, fill its properties, and add it to the database
+                        arme nouvelleArme = new arme();
+                        nouvelleArme.libelle = arme_textBox.Text;
+                        context.armes.Add(nouvelleArme);
+                        context.SaveChanges();
+
+                        dataGridView_Armes.Refresh();
+                        comboBox_Lesarmes.Refresh();
+                        MessageBox.Show("L'arme a été ajoutée à tous les adhérents avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (adherent_comboBox.SelectedItem is Adherent selectedAdherent && comboBox_Lesarmes.SelectedItem is arme selectedArme)
+                    {
+                        // Handle the case when an Adherent is selected
+                        Adherent adherent = allAdherents.FirstOrDefault(a => a == selectedAdherent);
+                        arme armeSelectionnee = context.armes.FirstOrDefault(a => a.libelle == selectedArme.libelle);
+
+                        if (selectedAdherent == null)
+                        {
+                            MessageBox.Show("Veuillez sélectionner un adhérent valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (adherent == null)
+                        {
+                            MessageBox.Show("L'adhérent sélectionné n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (selectedArme == null)
+                        {
+                            MessageBox.Show("Veuillez sélectionner une arme valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (armeSelectionnee == null)
+                        {
+                            MessageBox.Show("L'arme sélectionnée n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (adherent.armes.Any(a => a.libelle == selectedArme.libelle))
+                        {
+                            MessageBox.Show("L'adhérent sélectionné possède déjà cette arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        armeSelectionnee.Adherents.Add(adherent);
+                        context.armes.AddOrUpdate(selectedArme);
+                        context.SaveChanges();
+
+                        dataGridView_Armes.Refresh();
+                        comboBox_Lesarmes.Refresh();
+                        MessageBox.Show("L'arme a été ajoutée à l'adhérent avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
 
 
-                    MessageBox.Show("Arme supprimée avec succès.");
 
-                    // Rafraîchir la table des armes
+
+
+            private void SupprimerArmes_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    if (MessageBox.Show("Voulez-vous réellement supprimer cette arme ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        // Récupérer l'arme sélectionnée à partir du dataGridView_Armes
+                        if (dataGridView_Armes.SelectedRows.Count > 0)
+                        {
+                            DataGridViewRow selectedRow = dataGridView_Armes.SelectedRows[0];
+                            if (selectedRow.DataBoundItem is DataRowView rowView)
+                            {
+                                DataRow row = rowView.Row;
+                                int armeId = (int)row["IdArme"];
+
+                                // Vérifier si l'adhérent sélectionné dans adherent_comboBox est différent de "Toutes Armes"
+                                if (adherent_comboBox.SelectedItem is Adherent selectedAdherent && selectedAdherent.nom != "Toutes Armes")
+                                {
+                                    // Supprimer l'arme de l'adhérent
+                                    Armer armer = armerList.FirstOrDefault(a => a.IdAdherent == selectedAdherent.id && a.IdArme == armeId);
+                                    if (armer != null)
+                                    {
+                                        armerList.Remove(armer);
+                                    
+                                    }
+                                }
+                                else
+                                {
+                                    // Supprimer l'arme de tous les adhérents qui la possèdent
+                                    List<Armer> armersToRemove = armerList.Where(a => a.IdArme == armeId).ToList();
+                                    foreach (Armer armer in armersToRemove)
+                                    {
+                                        armerList.Remove(armer);
+                                    
+                                    }
+                                }
+
+                                // Enregistrer les modifications dans la base de données
+                                context.SaveChanges();
+
+                                MessageBox.Show("Arme supprimée avec succès.");
+
+                                // Rafraîchir le dataGridView_Armes
+                                dataGridView_Armes.Refresh();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            private void ville_textBox_TextChanged(object sender, EventArgs e)
+            {
+
+            }
+
+
+
+            private void AnnulerArmes_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    // Annuler les modifications sur l'arme en cours d'édition dans le BindingSource
+                    armeBindingSource.CancelEdit();
+
+                    // Réinitialiser le BindingSource pour refléter les valeurs d'origine
+                    armeBindingSource.ResetBindings(true);
+
+
                     dataGridView_Armes.Refresh();
+                    MessageBox.Show("Modifications annulées avec succès.");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-        
-
-
-
-        private void ville_textBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void AnnulerArmes_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Annuler les modifications sur l'arme en cours d'édition dans le BindingSource
-                armeBindingSource.CancelEdit();
-
-                // Réinitialiser le BindingSource pour refléter les valeurs d'origine
-                armeBindingSource.ResetBindings(true);
-
-
-                dataGridView_Armes.Refresh();
-                MessageBox.Show("Modifications annulées avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ConfirmerArmes_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Enregistrer les modifications sur l'arme en cours d'édition dans le BindingSource
-                armeBindingSource.EndEdit();
-
-                // Enregistrer les modifications dans la base de données
-                context.SaveChanges();
-
-                // Rafraîchir la table des armes pour afficher les modifications
-                dataGridView_Armes.Refresh();
-
-                MessageBox.Show("Modifications enregistrées avec succès.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void arme_textBox_TextChanged(object sender, EventArgs e)
-        { }
-
-        private void adherent_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage3_Enter(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    // Récupérer l'objet Adherent à partir de la source de données
-            //    Adherent adherentSelectionne = (Adherent)adherentBindingSource.Current;
-
-            //    // Charger les armes de l'adhérent à partir de la base de données
-            //    context.Entry(adherentSelectionne).Collection(a => a.armes).Load();
-
-            //    // Obtenir la liste des armes de l'adhérent
-            //    List<arme> lesArmes = adherentSelectionne.armes.ToList();
-
-            //    // Afficher les armes dans le dataGridView_Adherent
-            //    armeBindingSource.DataSource = lesArmes;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
-
-
-        private void ConfirmerAdherent_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                adherentBindingSource.EndEdit();
-
-                if(((Adherent)adherentBindingSource.Current).nom == null || ((Adherent)adherentBindingSource.Current).prenom == null || ((Adherent)adherentBindingSource.Current).licence == null)
+                catch (Exception ex)
                 {
-                    adherentBindingSource.RemoveCurrent();
-                    throw new Exception("Champs incomplet.");
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                ((Adherent)adherentBindingSource.Current).idClub = ((Club)clubBindingSource.Current).id;
-                context.Adherents.Add((Adherent)adherentBindingSource.Current);
-                context.SaveChanges();
-                MessageBox.Show("Adhérent ajouté", "Information", MessageBoxButtons.OK);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            ConfirmerAdherent.Visible = false;
-            AnnulerAdherent.Visible = false;
-            ModifierAdherent.Visible = true;
-            AjoutAdherent.Visible = true;
-        }
-
-        private void dataGridView_Clubs_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.SetAdherentByClub((Club)this.clubBindingSource.Current);
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ModifierAdherent_Click(object sender, EventArgs e)
-        {
-            try
+            private void ConfirmerArmes_Click(object sender, EventArgs e)
             {
-                adherentBindingSource.EndEdit();
-                ((Adherent)adherentBindingSource.Current).idClub = ((Club)clubBindingSource.Current).id;
-                context.SaveChanges();
-                MessageBox.Show("Adhérent mofifié", "Information", MessageBoxButtons.OK);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-
-        private void AjoutAdherent_Click(object sender, EventArgs e)
-        {
-            adherentBindingSource.AddNew();
-
-            ConfirmerAdherent.Visible = true;
-            AnnulerAdherent.Visible = true;
-            ModifierAdherent.Visible = false;
-            AjoutAdherent.Visible = false;
-        }
-
-        private void AnnulerAdherent_Click(object sender, EventArgs e)
-        {
-           adherentBindingSource.CancelEdit();
-
-            ConfirmerAdherent.Visible = false;
-            AnnulerAdherent.Visible = false;
-            ModifierAdherent.Visible = true;
-            AjoutAdherent.Visible = true;
-        }
-
-        private void SetAdherentByClub(Club club)
-        {
-            List<Adherent> lesAdherents = context.Adherents.ToList();
-            List<Adherent> lesAdherentsDuClub = new List<Adherent>();
-
-            foreach (Adherent a in lesAdherents)
-            {
-                if (a.idClub == club.id)
+                try
                 {
-                    lesAdherentsDuClub.Add(a);
+                    // Enregistrer les modifications sur l'arme en cours d'édition dans le BindingSource
+                    armeBindingSource.EndEdit();
+
+                    // Enregistrer les modifications dans la base de données
+                    context.SaveChanges();
+
+                    // Rafraîchir la table des armes pour afficher les modifications
+                    dataGridView_Armes.Refresh();
+
+                    MessageBox.Show("Modifications enregistrées avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            this.adherentBindingSource.DataSource = lesAdherentsDuClub;
-        }
-
-        private void SupprimerAdherent_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                adherentBindingSource.EndEdit();
-
-                MessageBox.Show("Etes-vous sûr de vouloir supprimer cet adhérent ?", "Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                context.Adherents.Remove((Adherent)adherentBindingSource.Current);
-                context.SaveChanges();
-                this.SetAdherentByClub((Club)clubBindingSource.Current);
-
-                MessageBox.Show("Supprimé", "Information", MessageBoxButtons.OK);
+            private void arme_textBox_TextChanged(object sender, EventArgs e)
+            { 
             }
-            catch (Exception ex)
+
+
+            private void adherent_comboBox_SelectedIndexChanged(object sender, EventArgs e)
             {
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Adherent selectedAdherent = adherent_comboBox.SelectedItem as Adherent;
+
+            
+
+                SetArmesByAdherent(selectedAdherent);
+            }
+
+
+            private void SetArmesByAdherent(Adherent adherent)
+            {
+                if (adherent != null && adherent.nom != "Toutes Armes")
+                {
+                    List<int> armeIds = armerList
+                        .Where(armer => armer.IdAdherent == adherent.id)
+                        .Select(armer => armer.IdArme)
+                        .ToList();
+
+                    List<arme> filteredArmes = lesarmes
+                        .Where(arme => armeIds.Contains(arme.id))
+                        .ToList();
+
+                    if (filteredArmes.Count == 0)
+                    {
+                        armerBindingSource.DataSource = new List<arme> { new arme { libelle = "Aucune arme disponible" } };
+                    }
+                    else
+                    {
+                        armerBindingSource.DataSource = filteredArmes;
+                    }
+                }
+                else
+                {
+                    armerBindingSource.DataSource = lesarmes;
+                }
+
+                // Ajoutez le code suivant pour mettre à jour la source de données des armes dans le dataGridView_Armes
+                dataGridView_Armes.DataSource = armerBindingSource;
+                dataGridView_Armes.Refresh();
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            private void tabPage3_Enter(object sender, EventArgs e)
+            {
+                    //try
+                    //{
+                    //    // Récupérer l'objet Adherent à partir de la source de données
+                    //    Adherent adherentSelectionne = (Adherent)adherentBindingSource.Current;
+
+                    //    // Charger les armes de l'adhérent à partir de la base de données
+                    //    context.Entry(adherentSelectionne).Collection(a => a.armes).Load();
+
+                    //    // Obtenir la liste des armes de l'adhérent
+                    //    List<arme> lesArmes = adherentSelectionne.armes.ToList();
+
+                    //    // Afficher les armes dans le dataGridView_Adherent
+                    //    armeBindingSource.DataSource = lesArmes;
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+            }
+
+
+            private void ConfirmerAdherent_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    adherentBindingSource.EndEdit();
+
+                    if (((Adherent)adherentBindingSource.Current).nom == null || ((Adherent)adherentBindingSource.Current).prenom == null || ((Adherent)adherentBindingSource.Current).licence == null)
+                    {
+                        adherentBindingSource.RemoveCurrent();
+                        throw new Exception("Champs incomplet.");
+                    }
+
+                    ((Adherent)adherentBindingSource.Current).idClub = ((Club)clubBindingSource.Current).id;
+                    context.Adherents.Add((Adherent)adherentBindingSource.Current);
+                    context.SaveChanges();
+                    MessageBox.Show("Adhérent ajouté", "Information", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ConfirmerAdherent.Visible = false;
+                AnnulerAdherent.Visible = false;
+                ModifierAdherent.Visible = true;
+                AjoutAdherent.Visible = true;
+            }
+
+            private void dataGridView_Clubs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            {
+                // Récupérer le club sélectionné à partir de la source de données
+                Club clubSelectionne = (Club)clubBindingSource.Current;
+
+                // Appeler la méthode pour mettre à jour les adhérents en fonction du club sélectionné
+                SetAdherentByClub(clubSelectionne);
+            }
+
+            private void label6_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void ModifierAdherent_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    adherentBindingSource.EndEdit();
+                    ((Adherent)adherentBindingSource.Current).idClub = ((Club)clubBindingSource.Current).id;
+                    context.SaveChanges();
+                    MessageBox.Show("Adhérent mofifié", "Information", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+
+            private void AjoutAdherent_Click(object sender, EventArgs e)
+            {
+                adherentBindingSource.AddNew();
+
+                ConfirmerAdherent.Visible = true;
+                AnnulerAdherent.Visible = true;
+                ModifierAdherent.Visible = false;
+                AjoutAdherent.Visible = false;
+            }
+
+            private void AnnulerAdherent_Click(object sender, EventArgs e)
+            {
+                adherentBindingSource.CancelEdit();
+
+                ConfirmerAdherent.Visible = false;
+                AnnulerAdherent.Visible = false;
+                ModifierAdherent.Visible = true;
+                AjoutAdherent.Visible = true;
+            }
+
+            private void SetAdherentByClub(Club club)
+            {
+                List<Adherent> adherentsByClub = allAdherents.Where(a => a.idClub == club.id).ToList();
+                adherentBindingSource.DataSource = adherentsByClub;
+            }
+
+
+
+            private void SupprimerAdherent_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    adherentBindingSource.EndEdit();
+
+                    MessageBox.Show("Etes-vous sûr de vouloir supprimer cet adhérent ?", "Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    context.Adherents.Remove((Adherent)adherentBindingSource.Current);
+                    context.SaveChanges();
+                    this.SetAdherentByClub((Club)clubBindingSource.Current);
+
+                    MessageBox.Show("Supprimé", "Information", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            private void SLclub_textBox_TextChanged(object sender, EventArgs e)
+            {
+                SLclub_textBox.Text = clubBindingSource.Current?.ToString();
+
+            }
+
+            private void dataGridView_Clubs_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+            {
+
+            }
+
+            private void tabPage3_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void comboBox_Lesarmes_SelectedIndexChanged(object sender, EventArgs e)
+            {
+
             }
         }
-
     }
-}

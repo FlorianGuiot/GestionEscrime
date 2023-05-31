@@ -14,5 +14,12 @@ namespace GestionEscrime
             return id + " - " + prenom + " " + nom + " - " + dateNaissance;
         }
 
+
+        // Foreign key property
+        public int? ArmeId { get; set; }
+
+        // Navigation property to the arme entity
+        public virtual arme arme { get; set; }
+
     }
 }
