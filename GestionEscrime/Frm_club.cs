@@ -118,11 +118,11 @@ namespace GestionEscrime
 
                 comboBox_Lesarmes.DataSource = context.armes.Local.ToList();
 
+                adherent_comboBox.SelectedItem = "Toutes Armes";
 
-            
-            
 
-                this.SetAdherentByClub((Club)clubBindingSource.Current);
+
+            this.SetAdherentByClub((Club)clubBindingSource.Current);
 
 
 
@@ -272,22 +272,7 @@ namespace GestionEscrime
 
             private void dataGridView_Armes_CellContentClick(object sender, DataGridViewCellEventArgs e)
             {
-                if (adherent_comboBox.SelectedItem is Adherent selectedAdherent)
-                {
-                    if (e.RowIndex >= 0 && e.RowIndex < dataGridView_Armes.Rows.Count)
-                    {
-                        DataGridViewRow row = dataGridView_Armes.Rows[e.RowIndex];
-                        if (row.Cells["libelle"].Value is arme selectedArme)
-                        {
-                            arme_textBox.Text = selectedArme.libelle;
-                        }
-                    }
-
-                }
-                else
-                {
-
-                }
+                
             }
 
 
@@ -297,14 +282,17 @@ namespace GestionEscrime
 
                 }
 
-            private void ModifierArmes_Click(object sender, EventArgs e)
+        private void ModifierArmes_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                string newArmeName = arme_textBox.Text;
+
+                // Récupérer l'adhérent sélectionné
+                string adherentSelectionne = adherent_comboBox.Text;
+
+                if (adherentSelectionne == "Toutes Armes")
                 {
-
-
-                    string newArmeName = arme_textBox.Text;
-
                     if (string.IsNullOrEmpty(newArmeName))
                     {
                         MessageBox.Show("Veuillez saisir un nouveau nom pour l'arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -312,144 +300,109 @@ namespace GestionEscrime
                     }
 
                     // Récupérer l'arme sélectionnée à partir de la source de données
-                    arme armeSelectionnee = (arme)armeBindingSource.Current;
+                    arme armeSelectionnee = dataGridView_Armes.CurrentRow.DataBoundItem as arme;
 
-                    // Modifier le nom de l'arme sélectionnée
+                    if (armeSelectionnee == null)
+                    {
+                        MessageBox.Show("Veuillez sélectionner une arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Modifier le libellé de l'arme sélectionnée
                     armeSelectionnee.libelle = newArmeName;
 
                     // Enregistrer les modifications dans la base de données
                     context.SaveChanges();
 
                     MessageBox.Show("Nom de l'arme mis à jour avec succès.");
+                    dataGridView_Armes.Refresh();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Veuillez sélectionner 'Toutes Armes' dans le combobox Adhérent.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-            private void AjoutArmes_Click(object sender, EventArgs e)
+            catch (Exception ex)
             {
-                try
-                {
-                    if (adherent_comboBox.SelectedItem is string selectedItem && selectedItem == "Toutes Armes")
-                    {
-                        // Handle the case when "Toutes Armes" is selected
-                        // Create a new arme instance, fill its properties, and add it to the database
-                        arme nouvelleArme = new arme();
-                        nouvelleArme.libelle = arme_textBox.Text;
-                        context.armes.Add(nouvelleArme);
-                        context.SaveChanges();
-
-                        dataGridView_Armes.Refresh();
-                        comboBox_Lesarmes.Refresh();
-                        MessageBox.Show("L'arme a été ajoutée à tous les adhérents avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (adherent_comboBox.SelectedItem is Adherent selectedAdherent && comboBox_Lesarmes.SelectedItem is arme selectedArme)
-                    {
-                        // Handle the case when an Adherent is selected
-                        Adherent adherent = allAdherents.FirstOrDefault(a => a == selectedAdherent);
-                        arme armeSelectionnee = context.armes.FirstOrDefault(a => a.libelle == selectedArme.libelle);
-
-                        if (selectedAdherent == null)
-                        {
-                            MessageBox.Show("Veuillez sélectionner un adhérent valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        if (adherent == null)
-                        {
-                            MessageBox.Show("L'adhérent sélectionné n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        if (selectedArme == null)
-                        {
-                            MessageBox.Show("Veuillez sélectionner une arme valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        if (armeSelectionnee == null)
-                        {
-                            MessageBox.Show("L'arme sélectionnée n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        if (adherent.armes.Any(a => a.libelle == selectedArme.libelle))
-                        {
-                            MessageBox.Show("L'adhérent sélectionné possède déjà cette arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        armeSelectionnee.Adherents.Add(adherent);
-                        context.armes.AddOrUpdate(selectedArme);
-                        context.SaveChanges();
-
-                        dataGridView_Armes.Refresh();
-                        comboBox_Lesarmes.Refresh();
-                        MessageBox.Show("L'arme a été ajoutée à l'adhérent avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
 
 
-
-
-
-            private void SupprimerArmes_Click(object sender, EventArgs e)
+        private void AjoutArmes_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
+                if (adherent_comboBox.SelectedItem is string selectedItem && selectedItem == "Toutes Armes")
                 {
-                    if (MessageBox.Show("Voulez-vous réellement supprimer cette arme ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                    {
-                        // Récupérer l'arme sélectionnée à partir du dataGridView_Armes
-                        if (dataGridView_Armes.SelectedRows.Count > 0)
-                        {
-                            DataGridViewRow selectedRow = dataGridView_Armes.SelectedRows[0];
-                            if (selectedRow.DataBoundItem is DataRowView rowView)
-                            {
-                                DataRow row = rowView.Row;
-                                int armeId = (int)row["IdArme"];
+                    // Handle the case when "Toutes Armes" is selected
+                    // Create a new arme instance, fill its properties, and add it to the database
+                    arme nouvelleArme = new arme();
+                    nouvelleArme.libelle = arme_textBox.Text;
+                    context.armes.Add(nouvelleArme);
+                    
 
-                                // Vérifier si l'adhérent sélectionné dans adherent_comboBox est différent de "Toutes Armes"
-                                if (adherent_comboBox.SelectedItem is Adherent selectedAdherent && selectedAdherent.nom != "Toutes Armes")
-                                {
-                                    // Supprimer l'arme de l'adhérent
-                                    Armer armer = armerList.FirstOrDefault(a => a.IdAdherent == selectedAdherent.id && a.IdArme == armeId);
-                                    if (armer != null)
-                                    {
-                                        armerList.Remove(armer);
-                                    
-                                    }
-                                }
-                                else
-                                {
-                                    // Supprimer l'arme de tous les adhérents qui la possèdent
-                                    List<Armer> armersToRemove = armerList.Where(a => a.IdArme == armeId).ToList();
-                                    foreach (Armer armer in armersToRemove)
-                                    {
-                                        armerList.Remove(armer);
-                                    
-                                    }
-                                }
-
-                                // Enregistrer les modifications dans la base de données
-                                context.SaveChanges();
-
-                                MessageBox.Show("Arme supprimée avec succès.");
-
-                                // Rafraîchir le dataGridView_Armes
-                                dataGridView_Armes.Refresh();
-                            }
-                        }
-                    }
+                    dataGridView_Armes.Refresh();
+                    comboBox_Lesarmes.Refresh();
+                    MessageBox.Show("L'arme a été ajoutée avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                else if (adherent_comboBox.SelectedItem is Adherent selectedAdherent && comboBox_Lesarmes.SelectedItem is arme selectedArme)
+                {
+                    // Handle the case when an Adherent is selected
+                    Adherent adherent = allAdherents.FirstOrDefault(a => a == selectedAdherent);
+                    arme armeSelectionnee = context.armes.FirstOrDefault(a => a.libelle == selectedArme.libelle);
+                    
+
+                    if (selectedAdherent == null)
+                    {
+                        MessageBox.Show("Veuillez sélectionner un adhérent valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (adherent == null)
+                    {
+                        MessageBox.Show("L'adhérent sélectionné n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (selectedArme == null)
+                    {
+                        MessageBox.Show("Veuillez sélectionner une arme valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (armeSelectionnee == null)
+                    {
+                        MessageBox.Show("L'arme sélectionnée n'existe pas.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (adherent.armes.Any(a => a.libelle == selectedArme.libelle))
+                    {
+                        MessageBox.Show("L'adhérent sélectionné possède déjà cette arme.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    selectedAdherent.armes.Add(armeSelectionnee);
+                    adherentBindingSource.Add(selectedAdherent);
+
+
+
+                    context.SaveChanges();
+
+
+
+                    MessageBox.Show("L'arme a été ajoutée à l'adhérent avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
+
+
+                dataGridView_Armes.Refresh();
+
+            }
+            catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -460,13 +413,74 @@ namespace GestionEscrime
 
 
 
+        private void SupprimerArmes_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez-vous réellement supprimer cette arme ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (dataGridView_Armes.CurrentRow != null)
+                {
+                    arme armeSelectionnee = (arme)dataGridView_Armes.CurrentRow.DataBoundItem;
+
+                    // Si un adhérent est sélectionné dans adherent_comboBox
+                    if (adherent_comboBox.SelectedItem is Adherent selectedAdherent)
+                    {
+                        if (selectedAdherent.nom != "Toutes Armes")
+                        {
+                            // Supprimer toutes les affectations de l'arme à l'adhérent
+
+                            selectedAdherent.armes.Remove(armeSelectionnee);
+
+                            
+
+                        }
+                    }
+                    else
+                    {
+                        // Supprimer l'arme de la liste des armes dans le BindingSource
+                        armerBindingSource.Remove(armeSelectionnee);
+
+                        // Supprimer l'arme de la base de données
+                        context.armes.Remove(armeSelectionnee);
+
+                        
+
+
+
+
+                    }
+
+
+
+
+                    // Enregistrer les modifications dans la base de données
+                    context.SaveChanges();
+
+                    dataGridView_Armes.Refresh();
+
+                    MessageBox.Show("Arme supprimée avec succès.");
+                }
+            }
+            else
+            {
+
+            }
+        }
 
 
 
 
 
 
-            private void ville_textBox_TextChanged(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+        private void ville_textBox_TextChanged(object sender, EventArgs e)
             {
 
             }
@@ -520,12 +534,29 @@ namespace GestionEscrime
 
 
             private void adherent_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Adherent selectedAdherent = adherent_comboBox.SelectedItem as Adherent;
+
+            if (adherent_comboBox.SelectedItem.ToString() == "Toutes Armes")
             {
-                Adherent selectedAdherent = adherent_comboBox.SelectedItem as Adherent;
+                comboBox_Lesarmes.Visible = false;
+                arme_textBox.Visible = true;
+                ModifierArmes.Visible = true;
 
-            
+            }
+            else
+            {
 
-                SetArmesByAdherent(selectedAdherent);
+                comboBox_Lesarmes.Visible = true;
+                arme_textBox.Visible = false;
+                ModifierArmes.Visible = false;
+            }
+
+
+
+
+
+            SetArmesByAdherent(selectedAdherent);
             }
 
 

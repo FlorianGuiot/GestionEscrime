@@ -141,6 +141,9 @@ namespace GestionEscrime
                 {
 
                     competitionBindingSource.EndEdit();
+                    ((Competition)competitionBindingSource.Current).Club = ((Club)clubComboBox1.SelectedItem);
+                    ((Competition)competitionBindingSource.Current).arme = ((arme)armeComboBox.SelectedItem);
+                    ((Competition)competitionBindingSource.Current).date = dateDateTimePicker.Value;
                     context.Competitions.Add((Competition)competitionBindingSource.Current);
                     context.SaveChanges();
                     MessageBox.Show("Compétition ajoutée !");
@@ -763,5 +766,9 @@ namespace GestionEscrime
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

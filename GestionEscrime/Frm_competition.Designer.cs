@@ -41,10 +41,13 @@
             this.armeComboBox = new System.Windows.Forms.ComboBox();
             this.clubComboBox1 = new System.Windows.Forms.ComboBox();
             this.dateDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.competitionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_supprimer = new System.Windows.Forms.Button();
             this.btn_ajouter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.participants = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ville = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +55,13 @@
             this.groupBoxAjouterParticipant = new System.Windows.Forms.GroupBox();
             this.participantComboBox = new System.Windows.Forms.ComboBox();
             this.adherentDataGridView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateNaissanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.licenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clubDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adherentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_supprimer_participant = new System.Windows.Forms.Button();
             this.btn_ajouter_participant = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,12 +77,19 @@
             this.btn_ajouter_maitre = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adherentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brevetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Responsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maitreArmeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabClassement = new System.Windows.Forms.TabPage();
             this.classementTextBox = new System.Windows.Forms.TextBox();
+            this.participerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_ajouter_classement = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,23 +170,11 @@
             this.dataGridViewTextBoxColumn78 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn79 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn80 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.competitionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateNaissanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.licenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clubDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adherentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adherentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.brevetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maitreArmeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.participerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idAdherentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCompetitionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.classementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adherentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.competitionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             armeLabel = new System.Windows.Forms.Label();
             dateLabel = new System.Windows.Forms.Label();
             clubLabel1 = new System.Windows.Forms.Label();
@@ -179,19 +184,19 @@
             this.tabControlCompet.SuspendLayout();
             this.tabCompetitions.SuspendLayout();
             this.groupBoxAjouterCompetition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.competitionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabParticipants.SuspendLayout();
             this.groupBoxAjouterParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adherentDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).BeginInit();
             this.tabDirectoire.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.tabClassement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.competitionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maitreArmeBindingSource)).BeginInit();
+            this.tabClassement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.participerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // armeLabel
@@ -329,6 +334,10 @@
             this.dateDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.dateDateTimePicker.TabIndex = 10;
             // 
+            // competitionBindingSource
+            // 
+            this.competitionBindingSource.DataSource = typeof(GestionEscrime.Competition);
+            // 
             // btn_supprimer
             // 
             this.btn_supprimer.BackColor = System.Drawing.Color.Red;
@@ -391,6 +400,23 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1289, 477);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Club
+            // 
+            this.Club.DataPropertyName = "Club";
+            this.Club.HeaderText = "Club";
+            this.Club.MinimumWidth = 6;
+            this.Club.Name = "Club";
+            this.Club.ReadOnly = true;
             // 
             // arme
             // 
@@ -481,6 +507,58 @@
             this.adherentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.adherentDataGridView.Size = new System.Drawing.Size(1192, 477);
             this.adherentDataGridView.TabIndex = 11;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // prenomDataGridViewTextBoxColumn
+            // 
+            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "prenom";
+            this.prenomDataGridViewTextBoxColumn.HeaderText = "prenom";
+            this.prenomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
+            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateNaissanceDataGridViewTextBoxColumn
+            // 
+            this.dateNaissanceDataGridViewTextBoxColumn.DataPropertyName = "dateNaissance";
+            this.dateNaissanceDataGridViewTextBoxColumn.HeaderText = "dateNaissance";
+            this.dateNaissanceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateNaissanceDataGridViewTextBoxColumn.Name = "dateNaissanceDataGridViewTextBoxColumn";
+            this.dateNaissanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // licenceDataGridViewTextBoxColumn
+            // 
+            this.licenceDataGridViewTextBoxColumn.DataPropertyName = "licence";
+            this.licenceDataGridViewTextBoxColumn.HeaderText = "licence";
+            this.licenceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.licenceDataGridViewTextBoxColumn.Name = "licenceDataGridViewTextBoxColumn";
+            this.licenceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clubDataGridViewTextBoxColumn
+            // 
+            this.clubDataGridViewTextBoxColumn.DataPropertyName = "Club";
+            this.clubDataGridViewTextBoxColumn.HeaderText = "Club";
+            this.clubDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.clubDataGridViewTextBoxColumn.Name = "clubDataGridViewTextBoxColumn";
+            this.clubDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // adherentBindingSource
+            // 
+            this.adherentBindingSource.DataSource = typeof(GestionEscrime.Adherent);
             // 
             // btn_supprimer_participant
             // 
@@ -678,12 +756,40 @@
             this.dataGridView3.Size = new System.Drawing.Size(1268, 477);
             this.dataGridView3.TabIndex = 12;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // adherentDataGridViewTextBoxColumn
+            // 
+            this.adherentDataGridViewTextBoxColumn.DataPropertyName = "Adherent";
+            this.adherentDataGridViewTextBoxColumn.HeaderText = "Adherent";
+            this.adherentDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.adherentDataGridViewTextBoxColumn.Name = "adherentDataGridViewTextBoxColumn";
+            this.adherentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // brevetDataGridViewTextBoxColumn
+            // 
+            this.brevetDataGridViewTextBoxColumn.DataPropertyName = "brevet";
+            this.brevetDataGridViewTextBoxColumn.HeaderText = "Brevet";
+            this.brevetDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.brevetDataGridViewTextBoxColumn.Name = "brevetDataGridViewTextBoxColumn";
+            this.brevetDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Responsable
             // 
             this.Responsable.HeaderText = "Responsable";
             this.Responsable.MinimumWidth = 6;
             this.Responsable.Name = "Responsable";
             this.Responsable.ReadOnly = true;
+            // 
+            // maitreArmeBindingSource
+            // 
+            this.maitreArmeBindingSource.DataSource = typeof(GestionEscrime.MaitreArme);
             // 
             // tabClassement
             // 
@@ -712,6 +818,10 @@
             this.classementTextBox.Name = "classementTextBox";
             this.classementTextBox.Size = new System.Drawing.Size(100, 22);
             this.classementTextBox.TabIndex = 20;
+            // 
+            // participerBindingSource
+            // 
+            this.participerBindingSource.DataSource = typeof(GestionEscrime.Participer);
             // 
             // btn_ajouter_classement
             // 
@@ -746,7 +856,12 @@
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
-            this.Column1});
+            this.Column1,
+            this.idAdherentDataGridViewTextBoxColumn,
+            this.idCompetitionDataGridViewTextBoxColumn,
+            this.classementDataGridViewTextBoxColumn,
+            this.adherentDataGridViewTextBoxColumn1,
+            this.competitionDataGridViewTextBoxColumn});
             this.dataGridView4.DataSource = this.participerBindingSource;
             this.dataGridView4.Location = new System.Drawing.Point(3, 2);
             this.dataGridView4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -759,6 +874,22 @@
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(921, 477);
             this.dataGridView4.TabIndex = 16;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Adherent";
+            this.Column2.HeaderText = "Participant";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Classement";
+            this.Column1.HeaderText = "Position";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1472,125 +1603,45 @@
             this.dataGridViewTextBoxColumn80.ReadOnly = true;
             this.dataGridViewTextBoxColumn80.Width = 434;
             // 
-            // competitionBindingSource
+            // idAdherentDataGridViewTextBoxColumn
             // 
-            this.competitionBindingSource.DataSource = typeof(GestionEscrime.Competition);
+            this.idAdherentDataGridViewTextBoxColumn.DataPropertyName = "idAdherent";
+            this.idAdherentDataGridViewTextBoxColumn.HeaderText = "idAdherent";
+            this.idAdherentDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idAdherentDataGridViewTextBoxColumn.Name = "idAdherentDataGridViewTextBoxColumn";
+            this.idAdherentDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dateDataGridViewTextBoxColumn
+            // idCompetitionDataGridViewTextBoxColumn
             // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idCompetitionDataGridViewTextBoxColumn.DataPropertyName = "idCompetition";
+            this.idCompetitionDataGridViewTextBoxColumn.HeaderText = "idCompetition";
+            this.idCompetitionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idCompetitionDataGridViewTextBoxColumn.Name = "idCompetitionDataGridViewTextBoxColumn";
+            this.idCompetitionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Club
+            // classementDataGridViewTextBoxColumn
             // 
-            this.Club.DataPropertyName = "Club";
-            this.Club.HeaderText = "Club";
-            this.Club.MinimumWidth = 6;
-            this.Club.Name = "Club";
-            this.Club.ReadOnly = true;
+            this.classementDataGridViewTextBoxColumn.DataPropertyName = "classement";
+            this.classementDataGridViewTextBoxColumn.HeaderText = "classement";
+            this.classementDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.classementDataGridViewTextBoxColumn.Name = "classementDataGridViewTextBoxColumn";
+            this.classementDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idDataGridViewTextBoxColumn1
+            // adherentDataGridViewTextBoxColumn1
             // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.adherentDataGridViewTextBoxColumn1.DataPropertyName = "Adherent";
+            this.adherentDataGridViewTextBoxColumn1.HeaderText = "Adherent";
+            this.adherentDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.adherentDataGridViewTextBoxColumn1.Name = "adherentDataGridViewTextBoxColumn1";
+            this.adherentDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // nomDataGridViewTextBoxColumn
+            // competitionDataGridViewTextBoxColumn
             // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // prenomDataGridViewTextBoxColumn
-            // 
-            this.prenomDataGridViewTextBoxColumn.DataPropertyName = "prenom";
-            this.prenomDataGridViewTextBoxColumn.HeaderText = "prenom";
-            this.prenomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.prenomDataGridViewTextBoxColumn.Name = "prenomDataGridViewTextBoxColumn";
-            this.prenomDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateNaissanceDataGridViewTextBoxColumn
-            // 
-            this.dateNaissanceDataGridViewTextBoxColumn.DataPropertyName = "dateNaissance";
-            this.dateNaissanceDataGridViewTextBoxColumn.HeaderText = "dateNaissance";
-            this.dateNaissanceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateNaissanceDataGridViewTextBoxColumn.Name = "dateNaissanceDataGridViewTextBoxColumn";
-            this.dateNaissanceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // licenceDataGridViewTextBoxColumn
-            // 
-            this.licenceDataGridViewTextBoxColumn.DataPropertyName = "licence";
-            this.licenceDataGridViewTextBoxColumn.HeaderText = "licence";
-            this.licenceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.licenceDataGridViewTextBoxColumn.Name = "licenceDataGridViewTextBoxColumn";
-            this.licenceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // clubDataGridViewTextBoxColumn
-            // 
-            this.clubDataGridViewTextBoxColumn.DataPropertyName = "Club";
-            this.clubDataGridViewTextBoxColumn.HeaderText = "Club";
-            this.clubDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.clubDataGridViewTextBoxColumn.Name = "clubDataGridViewTextBoxColumn";
-            this.clubDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adherentBindingSource
-            // 
-            this.adherentBindingSource.DataSource = typeof(GestionEscrime.Adherent);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adherentDataGridViewTextBoxColumn
-            // 
-            this.adherentDataGridViewTextBoxColumn.DataPropertyName = "Adherent";
-            this.adherentDataGridViewTextBoxColumn.HeaderText = "Adherent";
-            this.adherentDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.adherentDataGridViewTextBoxColumn.Name = "adherentDataGridViewTextBoxColumn";
-            this.adherentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // brevetDataGridViewTextBoxColumn
-            // 
-            this.brevetDataGridViewTextBoxColumn.DataPropertyName = "brevet";
-            this.brevetDataGridViewTextBoxColumn.HeaderText = "Brevet";
-            this.brevetDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.brevetDataGridViewTextBoxColumn.Name = "brevetDataGridViewTextBoxColumn";
-            this.brevetDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maitreArmeBindingSource
-            // 
-            this.maitreArmeBindingSource.DataSource = typeof(GestionEscrime.MaitreArme);
-            // 
-            // participerBindingSource
-            // 
-            this.participerBindingSource.DataSource = typeof(GestionEscrime.Participer);
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Adherent";
-            this.Column2.HeaderText = "Participant";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Classement";
-            this.Column1.HeaderText = "Position";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.competitionDataGridViewTextBoxColumn.DataPropertyName = "Competition";
+            this.competitionDataGridViewTextBoxColumn.HeaderText = "Competition";
+            this.competitionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.competitionDataGridViewTextBoxColumn.Name = "competitionDataGridViewTextBoxColumn";
+            this.competitionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Frm_competition
             // 
@@ -1609,24 +1660,24 @@
             this.tabCompetitions.PerformLayout();
             this.groupBoxAjouterCompetition.ResumeLayout(false);
             this.groupBoxAjouterCompetition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.competitionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabParticipants.ResumeLayout(false);
             this.tabParticipants.PerformLayout();
             this.groupBoxAjouterParticipant.ResumeLayout(false);
             this.groupBoxAjouterParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adherentDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).EndInit();
             this.tabDirectoire.ResumeLayout(false);
             this.tabDirectoire.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maitreArmeBindingSource)).EndInit();
             this.tabClassement.ResumeLayout(false);
             this.tabClassement.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.competitionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maitreArmeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.participerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1768,5 +1819,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn79;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn80;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idAdherentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCompetitionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn classementDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adherentDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn competitionDataGridViewTextBoxColumn;
     }
 }
