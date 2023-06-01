@@ -80,11 +80,11 @@
             this.SupprimerArmes = new System.Windows.Forms.Button();
             this.ModifierArmes = new System.Windows.Forms.Button();
             this.arme_textBox = new System.Windows.Forms.TextBox();
-            this.armeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView_Armes = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.libelleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.armeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clubTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.ClubTableAdapter();
             this.tableAdapterManager = new GestionEscrime.escrimeDataSetTableAdapters.TableAdapterManager();
             this.adherentTableAdapter = new GestionEscrime.escrimeDataSetTableAdapters.AdherentTableAdapter();
@@ -100,8 +100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.adherentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.armerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,11 +111,11 @@
             this.tabControl1.Controls.Add(this.Clubs);
             this.tabControl1.Controls.Add(this.Adherent);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(3, 14);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(2, 11);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1064, 487);
+            this.tabControl1.Size = new System.Drawing.Size(798, 396);
             this.tabControl1.TabIndex = 1;
             // 
             // Clubs
@@ -131,11 +131,11 @@
             this.Clubs.Controls.Add(this.AjoutClub);
             this.Clubs.Controls.Add(this.club_textBox);
             this.Clubs.Controls.Add(this.dataGridView_Clubs);
-            this.Clubs.Location = new System.Drawing.Point(4, 25);
-            this.Clubs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Clubs.Location = new System.Drawing.Point(4, 22);
+            this.Clubs.Margin = new System.Windows.Forms.Padding(2);
             this.Clubs.Name = "Clubs";
-            this.Clubs.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Clubs.Size = new System.Drawing.Size(1056, 458);
+            this.Clubs.Padding = new System.Windows.Forms.Padding(2);
+            this.Clubs.Size = new System.Drawing.Size(790, 370);
             this.Clubs.TabIndex = 0;
             this.Clubs.Text = "Clubs";
             this.Clubs.UseVisualStyleBackColor = true;
@@ -144,12 +144,10 @@
             // 
             this.ville_textBox.CausesValidation = false;
             this.ville_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "ville", true));
-            this.ville_textBox.Location = new System.Drawing.Point(513, 114);
-            this.ville_textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ville_textBox.Location = new System.Drawing.Point(385, 93);
             this.ville_textBox.Name = "ville_textBox";
-            this.ville_textBox.Size = new System.Drawing.Size(316, 22);
+            this.ville_textBox.Size = new System.Drawing.Size(238, 20);
             this.ville_textBox.TabIndex = 13;
-            this.ville_textBox.TextChanged += new System.EventHandler(this.ville_textBox_TextChanged);
             // 
             // clubBindingSource
             // 
@@ -163,10 +161,10 @@
             // 
             // SupprimerClub
             // 
-            this.SupprimerClub.Location = new System.Drawing.Point(646, 162);
-            this.SupprimerClub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SupprimerClub.Location = new System.Drawing.Point(484, 132);
+            this.SupprimerClub.Margin = new System.Windows.Forms.Padding(2);
             this.SupprimerClub.Name = "SupprimerClub";
-            this.SupprimerClub.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerClub.Size = new System.Drawing.Size(79, 19);
             this.SupprimerClub.TabIndex = 12;
             this.SupprimerClub.Text = "Supprimer";
             this.SupprimerClub.UseVisualStyleBackColor = true;
@@ -174,10 +172,10 @@
             // 
             // ModifClub
             // 
-            this.ModifClub.Location = new System.Drawing.Point(854, 86);
-            this.ModifClub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ModifClub.Location = new System.Drawing.Point(640, 70);
+            this.ModifClub.Margin = new System.Windows.Forms.Padding(2);
             this.ModifClub.Name = "ModifClub";
-            this.ModifClub.Size = new System.Drawing.Size(105, 23);
+            this.ModifClub.Size = new System.Drawing.Size(79, 19);
             this.ModifClub.TabIndex = 11;
             this.ModifClub.Text = "Modifier";
             this.ModifClub.UseVisualStyleBackColor = true;
@@ -186,18 +184,20 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(453, 114);
+            this.label5.Location = new System.Drawing.Point(340, 93);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 16);
+            this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Ville :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(453, 59);
+            this.label4.Location = new System.Drawing.Point(340, 48);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Nom :";
             // 
@@ -206,10 +206,10 @@
             this.AnnulerClub.BackColor = System.Drawing.Color.Red;
             this.AnnulerClub.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AnnulerClub.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AnnulerClub.Location = new System.Drawing.Point(880, 396);
-            this.AnnulerClub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AnnulerClub.Location = new System.Drawing.Point(660, 322);
+            this.AnnulerClub.Margin = new System.Windows.Forms.Padding(2);
             this.AnnulerClub.Name = "AnnulerClub";
-            this.AnnulerClub.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerClub.Size = new System.Drawing.Size(126, 44);
             this.AnnulerClub.TabIndex = 7;
             this.AnnulerClub.Text = "Annuler";
             this.AnnulerClub.UseVisualStyleBackColor = false;
@@ -217,10 +217,10 @@
             // 
             // ConfirmerClub
             // 
-            this.ConfirmerClub.Location = new System.Drawing.Point(563, 396);
-            this.ConfirmerClub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ConfirmerClub.Location = new System.Drawing.Point(422, 322);
+            this.ConfirmerClub.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmerClub.Name = "ConfirmerClub";
-            this.ConfirmerClub.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerClub.Size = new System.Drawing.Size(126, 44);
             this.ConfirmerClub.TabIndex = 6;
             this.ConfirmerClub.Text = "Confirmer";
             this.ConfirmerClub.UseVisualStyleBackColor = true;
@@ -230,19 +230,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(81, 12);
+            this.label1.Location = new System.Drawing.Point(61, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 26);
+            this.label1.Size = new System.Drawing.Size(56, 22);
             this.label1.TabIndex = 5;
             this.label1.Text = "Clubs";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // AjoutClub
             // 
-            this.AjoutClub.Location = new System.Drawing.Point(513, 162);
-            this.AjoutClub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AjoutClub.Location = new System.Drawing.Point(385, 132);
+            this.AjoutClub.Margin = new System.Windows.Forms.Padding(2);
             this.AjoutClub.Name = "AjoutClub";
-            this.AjoutClub.Size = new System.Drawing.Size(105, 23);
+            this.AjoutClub.Size = new System.Drawing.Size(79, 19);
             this.AjoutClub.TabIndex = 3;
             this.AjoutClub.Text = "Ajouter";
             this.AjoutClub.UseVisualStyleBackColor = true;
@@ -252,12 +252,10 @@
             // 
             this.club_textBox.CausesValidation = false;
             this.club_textBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clubBindingSource, "nom", true));
-            this.club_textBox.Location = new System.Drawing.Point(513, 56);
-            this.club_textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.club_textBox.Location = new System.Drawing.Point(385, 46);
             this.club_textBox.Name = "club_textBox";
-            this.club_textBox.Size = new System.Drawing.Size(316, 22);
+            this.club_textBox.Size = new System.Drawing.Size(238, 20);
             this.club_textBox.TabIndex = 1;
-            this.club_textBox.TextChanged += new System.EventHandler(this.club_textBox_TextChanged);
             // 
             // dataGridView_Clubs
             // 
@@ -268,15 +266,15 @@
             this.nomDataGridViewTextBoxColumn,
             this.villeDataGridViewTextBoxColumn});
             this.dataGridView_Clubs.DataSource = this.clubBindingSource;
-            this.dataGridView_Clubs.Location = new System.Drawing.Point(6, 40);
-            this.dataGridView_Clubs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView_Clubs.Location = new System.Drawing.Point(4, 32);
+            this.dataGridView_Clubs.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_Clubs.Name = "dataGridView_Clubs";
             this.dataGridView_Clubs.RowHeadersWidth = 51;
             this.dataGridView_Clubs.RowTemplate.Height = 24;
             this.dataGridView_Clubs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Clubs.Size = new System.Drawing.Size(431, 408);
+            this.dataGridView_Clubs.Size = new System.Drawing.Size(323, 332);
             this.dataGridView_Clubs.TabIndex = 0;
-            this.dataGridView_Clubs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Clubs_CellContentClick_1);
+            this.dataGridView_Clubs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Clubs_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -322,11 +320,11 @@
             this.Adherent.Controls.Add(this.txtBoxAdherentNom);
             this.Adherent.Controls.Add(this.label2);
             this.Adherent.Controls.Add(this.dataGridView_Adherent);
-            this.Adherent.Location = new System.Drawing.Point(4, 25);
-            this.Adherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Adherent.Location = new System.Drawing.Point(4, 22);
+            this.Adherent.Margin = new System.Windows.Forms.Padding(2);
             this.Adherent.Name = "Adherent";
-            this.Adherent.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Adherent.Size = new System.Drawing.Size(1056, 458);
+            this.Adherent.Padding = new System.Windows.Forms.Padding(2);
+            this.Adherent.Size = new System.Drawing.Size(790, 370);
             this.Adherent.TabIndex = 1;
             this.Adherent.Text = "Adherent";
             this.Adherent.UseVisualStyleBackColor = true;
@@ -335,19 +333,17 @@
             // 
             this.comboClub.DataSource = this.clubBindingSource;
             this.comboClub.FormattingEnabled = true;
-            this.comboClub.Location = new System.Drawing.Point(742, 229);
-            this.comboClub.Margin = new System.Windows.Forms.Padding(4);
+            this.comboClub.Location = new System.Drawing.Point(556, 186);
             this.comboClub.Name = "comboClub";
-            this.comboClub.Size = new System.Drawing.Size(239, 24);
+            this.comboClub.Size = new System.Drawing.Size(180, 21);
             this.comboClub.TabIndex = 18;
             // 
             // dateTimeAdherent
             // 
             this.dateTimeAdherent.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.adherentBindingSource, "dateNaissance", true));
-            this.dateTimeAdherent.Location = new System.Drawing.Point(742, 143);
-            this.dateTimeAdherent.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimeAdherent.Location = new System.Drawing.Point(556, 116);
             this.dateTimeAdherent.Name = "dateTimeAdherent";
-            this.dateTimeAdherent.Size = new System.Drawing.Size(239, 22);
+            this.dateTimeAdherent.Size = new System.Drawing.Size(180, 20);
             this.dateTimeAdherent.TabIndex = 17;
             // 
             // adherentBindingSource
@@ -358,78 +354,71 @@
             // lblAdherentLicence
             // 
             this.lblAdherentLicence.AutoSize = true;
-            this.lblAdherentLicence.Location = new System.Drawing.Point(673, 186);
-            this.lblAdherentLicence.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAdherentLicence.Location = new System.Drawing.Point(505, 151);
             this.lblAdherentLicence.Name = "lblAdherentLicence";
-            this.lblAdherentLicence.Size = new System.Drawing.Size(54, 16);
+            this.lblAdherentLicence.Size = new System.Drawing.Size(45, 13);
             this.lblAdherentLicence.TabIndex = 16;
             this.lblAdherentLicence.Text = "Licence";
             // 
             // lblAdherentDate
             // 
             this.lblAdherentDate.AutoSize = true;
-            this.lblAdherentDate.Location = new System.Drawing.Point(624, 143);
-            this.lblAdherentDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAdherentDate.Location = new System.Drawing.Point(468, 116);
             this.lblAdherentDate.Name = "lblAdherentDate";
-            this.lblAdherentDate.Size = new System.Drawing.Size(104, 16);
+            this.lblAdherentDate.Size = new System.Drawing.Size(83, 13);
             this.lblAdherentDate.TabIndex = 15;
             this.lblAdherentDate.Text = "Date Naissance";
             // 
             // lblAdherentPrenom
             // 
             this.lblAdherentPrenom.AutoSize = true;
-            this.lblAdherentPrenom.Location = new System.Drawing.Point(676, 103);
-            this.lblAdherentPrenom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAdherentPrenom.Location = new System.Drawing.Point(507, 84);
             this.lblAdherentPrenom.Name = "lblAdherentPrenom";
-            this.lblAdherentPrenom.Size = new System.Drawing.Size(54, 16);
+            this.lblAdherentPrenom.Size = new System.Drawing.Size(43, 13);
             this.lblAdherentPrenom.TabIndex = 14;
             this.lblAdherentPrenom.Text = "Prénom";
             // 
             // lblAdherentNom
             // 
             this.lblAdherentNom.AutoSize = true;
-            this.lblAdherentNom.Location = new System.Drawing.Point(694, 55);
-            this.lblAdherentNom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAdherentNom.Location = new System.Drawing.Point(520, 45);
             this.lblAdherentNom.Name = "lblAdherentNom";
-            this.lblAdherentNom.Size = new System.Drawing.Size(36, 16);
+            this.lblAdherentNom.Size = new System.Drawing.Size(29, 13);
             this.lblAdherentNom.TabIndex = 13;
             this.lblAdherentNom.Text = "Nom";
-            this.lblAdherentNom.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtBoxAdherentLicence
             // 
             this.txtBoxAdherentLicence.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.adherentBindingSource, "licence", true));
-            this.txtBoxAdherentLicence.Location = new System.Drawing.Point(742, 183);
-            this.txtBoxAdherentLicence.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxAdherentLicence.Location = new System.Drawing.Point(556, 149);
             this.txtBoxAdherentLicence.Name = "txtBoxAdherentLicence";
-            this.txtBoxAdherentLicence.Size = new System.Drawing.Size(239, 22);
+            this.txtBoxAdherentLicence.Size = new System.Drawing.Size(180, 20);
             this.txtBoxAdherentLicence.TabIndex = 12;
             // 
             // txtBoxAdherentPrenom
             // 
             this.txtBoxAdherentPrenom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.adherentBindingSource, "prenom", true));
-            this.txtBoxAdherentPrenom.Location = new System.Drawing.Point(742, 99);
-            this.txtBoxAdherentPrenom.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxAdherentPrenom.Location = new System.Drawing.Point(556, 80);
             this.txtBoxAdherentPrenom.Name = "txtBoxAdherentPrenom";
-            this.txtBoxAdherentPrenom.Size = new System.Drawing.Size(239, 22);
+            this.txtBoxAdherentPrenom.Size = new System.Drawing.Size(180, 20);
             this.txtBoxAdherentPrenom.TabIndex = 10;
             // 
             // SLclub_textBox
             // 
             this.SLclub_textBox.Enabled = false;
-            this.SLclub_textBox.Location = new System.Drawing.Point(376, 12);
-            this.SLclub_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SLclub_textBox.Location = new System.Drawing.Point(282, 10);
+            this.SLclub_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SLclub_textBox.Name = "SLclub_textBox";
-            this.SLclub_textBox.Size = new System.Drawing.Size(239, 22);
+            this.SLclub_textBox.Size = new System.Drawing.Size(180, 20);
             this.SLclub_textBox.TabIndex = 9;
             this.SLclub_textBox.TextChanged += new System.EventHandler(this.SLclub_textBox_TextChanged);
             // 
             // ConfirmerAdherent
             // 
-            this.ConfirmerAdherent.Location = new System.Drawing.Point(640, 396);
-            this.ConfirmerAdherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ConfirmerAdherent.Location = new System.Drawing.Point(480, 322);
+            this.ConfirmerAdherent.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmerAdherent.Name = "ConfirmerAdherent";
-            this.ConfirmerAdherent.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerAdherent.Size = new System.Drawing.Size(126, 44);
             this.ConfirmerAdherent.TabIndex = 8;
             this.ConfirmerAdherent.Text = "Confirmer";
             this.ConfirmerAdherent.UseVisualStyleBackColor = true;
@@ -441,10 +430,10 @@
             this.AnnulerAdherent.BackColor = System.Drawing.Color.Red;
             this.AnnulerAdherent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AnnulerAdherent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AnnulerAdherent.Location = new System.Drawing.Point(880, 396);
-            this.AnnulerAdherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AnnulerAdherent.Location = new System.Drawing.Point(660, 322);
+            this.AnnulerAdherent.Margin = new System.Windows.Forms.Padding(2);
             this.AnnulerAdherent.Name = "AnnulerAdherent";
-            this.AnnulerAdherent.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerAdherent.Size = new System.Drawing.Size(126, 44);
             this.AnnulerAdherent.TabIndex = 7;
             this.AnnulerAdherent.Text = "Annuler";
             this.AnnulerAdherent.UseVisualStyleBackColor = false;
@@ -453,10 +442,10 @@
             // 
             // SupprimerAdherent
             // 
-            this.SupprimerAdherent.Location = new System.Drawing.Point(798, 348);
-            this.SupprimerAdherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SupprimerAdherent.Location = new System.Drawing.Point(598, 283);
+            this.SupprimerAdherent.Margin = new System.Windows.Forms.Padding(2);
             this.SupprimerAdherent.Name = "SupprimerAdherent";
-            this.SupprimerAdherent.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerAdherent.Size = new System.Drawing.Size(79, 19);
             this.SupprimerAdherent.TabIndex = 5;
             this.SupprimerAdherent.Text = "Supprimer";
             this.SupprimerAdherent.UseVisualStyleBackColor = true;
@@ -464,10 +453,10 @@
             // 
             // AjoutAdherent
             // 
-            this.AjoutAdherent.Location = new System.Drawing.Point(697, 298);
-            this.AjoutAdherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AjoutAdherent.Location = new System.Drawing.Point(523, 242);
+            this.AjoutAdherent.Margin = new System.Windows.Forms.Padding(2);
             this.AjoutAdherent.Name = "AjoutAdherent";
-            this.AjoutAdherent.Size = new System.Drawing.Size(105, 23);
+            this.AjoutAdherent.Size = new System.Drawing.Size(79, 19);
             this.AjoutAdherent.TabIndex = 4;
             this.AjoutAdherent.Text = "Ajouter";
             this.AjoutAdherent.UseVisualStyleBackColor = true;
@@ -475,10 +464,10 @@
             // 
             // ModifierAdherent
             // 
-            this.ModifierAdherent.Location = new System.Drawing.Point(898, 298);
-            this.ModifierAdherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ModifierAdherent.Location = new System.Drawing.Point(674, 242);
+            this.ModifierAdherent.Margin = new System.Windows.Forms.Padding(2);
             this.ModifierAdherent.Name = "ModifierAdherent";
-            this.ModifierAdherent.Size = new System.Drawing.Size(105, 23);
+            this.ModifierAdherent.Size = new System.Drawing.Size(79, 19);
             this.ModifierAdherent.TabIndex = 3;
             this.ModifierAdherent.Text = "Modifier";
             this.ModifierAdherent.UseVisualStyleBackColor = true;
@@ -487,20 +476,21 @@
             // txtBoxAdherentNom
             // 
             this.txtBoxAdherentNom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.adherentBindingSource, "nom", true));
-            this.txtBoxAdherentNom.Location = new System.Drawing.Point(742, 50);
-            this.txtBoxAdherentNom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxAdherentNom.Location = new System.Drawing.Point(556, 41);
+            this.txtBoxAdherentNom.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxAdherentNom.Multiline = true;
             this.txtBoxAdherentNom.Name = "txtBoxAdherentNom";
-            this.txtBoxAdherentNom.Size = new System.Drawing.Size(239, 24);
+            this.txtBoxAdherentNom.Size = new System.Drawing.Size(180, 20);
             this.txtBoxAdherentNom.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 12);
+            this.label2.Location = new System.Drawing.Point(50, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 26);
+            this.label2.Size = new System.Drawing.Size(83, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Adherent";
             // 
@@ -518,16 +508,15 @@
             this.dateNaissanceDataGridViewTextBoxColumn,
             this.licenceDataGridViewTextBoxColumn});
             this.dataGridView_Adherent.DataSource = this.adherentBindingSource;
-            this.dataGridView_Adherent.Location = new System.Drawing.Point(6, 40);
-            this.dataGridView_Adherent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView_Adherent.Location = new System.Drawing.Point(4, 32);
+            this.dataGridView_Adherent.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_Adherent.Name = "dataGridView_Adherent";
             this.dataGridView_Adherent.ReadOnly = true;
             this.dataGridView_Adherent.RowHeadersWidth = 51;
             this.dataGridView_Adherent.RowTemplate.Height = 24;
             this.dataGridView_Adherent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Adherent.Size = new System.Drawing.Size(594, 408);
+            this.dataGridView_Adherent.Size = new System.Drawing.Size(446, 332);
             this.dataGridView_Adherent.TabIndex = 0;
-            this.dataGridView_Adherent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Adherent_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -587,35 +576,34 @@
             this.tabPage3.Controls.Add(this.arme_textBox);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.dataGridView_Armes);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1056, 458);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(790, 370);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Armes";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // comboBox_Lesarmes
             // 
             this.comboBox_Lesarmes.CausesValidation = false;
             this.comboBox_Lesarmes.FormattingEnabled = true;
-            this.comboBox_Lesarmes.Location = new System.Drawing.Point(647, 51);
+            this.comboBox_Lesarmes.Location = new System.Drawing.Point(485, 41);
+            this.comboBox_Lesarmes.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_Lesarmes.Name = "comboBox_Lesarmes";
-            this.comboBox_Lesarmes.Size = new System.Drawing.Size(257, 24);
+            this.comboBox_Lesarmes.Size = new System.Drawing.Size(194, 21);
             this.comboBox_Lesarmes.TabIndex = 9;
-            this.comboBox_Lesarmes.SelectedIndexChanged += new System.EventHandler(this.comboBox_Lesarmes_SelectedIndexChanged);
             // 
             // adherent_comboBox
             // 
             this.adherent_comboBox.CausesValidation = false;
             this.adherent_comboBox.FormattingEnabled = true;
-            this.adherent_comboBox.Location = new System.Drawing.Point(376, 12);
-            this.adherent_comboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.adherent_comboBox.Location = new System.Drawing.Point(282, 10);
+            this.adherent_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.adherent_comboBox.Name = "adherent_comboBox";
-            this.adherent_comboBox.Size = new System.Drawing.Size(239, 24);
+            this.adherent_comboBox.Size = new System.Drawing.Size(180, 21);
             this.adherent_comboBox.TabIndex = 8;
             this.adherent_comboBox.SelectedIndexChanged += new System.EventHandler(this.adherent_comboBox_SelectedIndexChanged);
             // 
@@ -624,10 +612,10 @@
             this.AnnulerArmes.BackColor = System.Drawing.Color.Red;
             this.AnnulerArmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AnnulerArmes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AnnulerArmes.Location = new System.Drawing.Point(880, 396);
-            this.AnnulerArmes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AnnulerArmes.Location = new System.Drawing.Point(660, 322);
+            this.AnnulerArmes.Margin = new System.Windows.Forms.Padding(2);
             this.AnnulerArmes.Name = "AnnulerArmes";
-            this.AnnulerArmes.Size = new System.Drawing.Size(168, 54);
+            this.AnnulerArmes.Size = new System.Drawing.Size(126, 44);
             this.AnnulerArmes.TabIndex = 7;
             this.AnnulerArmes.Text = "Annuler";
             this.AnnulerArmes.UseVisualStyleBackColor = false;
@@ -635,10 +623,10 @@
             // 
             // ConfirmerArmes
             // 
-            this.ConfirmerArmes.Location = new System.Drawing.Point(563, 396);
-            this.ConfirmerArmes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ConfirmerArmes.Location = new System.Drawing.Point(422, 322);
+            this.ConfirmerArmes.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmerArmes.Name = "ConfirmerArmes";
-            this.ConfirmerArmes.Size = new System.Drawing.Size(168, 54);
+            this.ConfirmerArmes.Size = new System.Drawing.Size(126, 44);
             this.ConfirmerArmes.TabIndex = 6;
             this.ConfirmerArmes.Text = "Confirmer";
             this.ConfirmerArmes.UseVisualStyleBackColor = true;
@@ -646,10 +634,10 @@
             // 
             // AjoutArmes
             // 
-            this.AjoutArmes.Location = new System.Drawing.Point(647, 142);
-            this.AjoutArmes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AjoutArmes.Location = new System.Drawing.Point(485, 115);
+            this.AjoutArmes.Margin = new System.Windows.Forms.Padding(2);
             this.AjoutArmes.Name = "AjoutArmes";
-            this.AjoutArmes.Size = new System.Drawing.Size(105, 23);
+            this.AjoutArmes.Size = new System.Drawing.Size(79, 19);
             this.AjoutArmes.TabIndex = 5;
             this.AjoutArmes.Text = "Ajouter";
             this.AjoutArmes.UseVisualStyleBackColor = true;
@@ -657,10 +645,10 @@
             // 
             // SupprimerArmes
             // 
-            this.SupprimerArmes.Location = new System.Drawing.Point(799, 142);
-            this.SupprimerArmes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SupprimerArmes.Location = new System.Drawing.Point(599, 115);
+            this.SupprimerArmes.Margin = new System.Windows.Forms.Padding(2);
             this.SupprimerArmes.Name = "SupprimerArmes";
-            this.SupprimerArmes.Size = new System.Drawing.Size(105, 23);
+            this.SupprimerArmes.Size = new System.Drawing.Size(79, 19);
             this.SupprimerArmes.TabIndex = 4;
             this.SupprimerArmes.Text = "Supprimer";
             this.SupprimerArmes.UseVisualStyleBackColor = true;
@@ -668,10 +656,10 @@
             // 
             // ModifierArmes
             // 
-            this.ModifierArmes.Location = new System.Drawing.Point(943, 81);
-            this.ModifierArmes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ModifierArmes.Location = new System.Drawing.Point(707, 66);
+            this.ModifierArmes.Margin = new System.Windows.Forms.Padding(2);
             this.ModifierArmes.Name = "ModifierArmes";
-            this.ModifierArmes.Size = new System.Drawing.Size(105, 23);
+            this.ModifierArmes.Size = new System.Drawing.Size(79, 19);
             this.ModifierArmes.TabIndex = 3;
             this.ModifierArmes.Text = "Modifier";
             this.ModifierArmes.UseVisualStyleBackColor = true;
@@ -680,27 +668,20 @@
             // arme_textBox
             // 
             this.arme_textBox.CausesValidation = false;
-            this.arme_textBox.Location = new System.Drawing.Point(647, 82);
-            this.arme_textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.arme_textBox.Location = new System.Drawing.Point(485, 67);
             this.arme_textBox.Name = "arme_textBox";
-            this.arme_textBox.Size = new System.Drawing.Size(257, 22);
+            this.arme_textBox.Size = new System.Drawing.Size(194, 20);
             this.arme_textBox.TabIndex = 2;
-            this.arme_textBox.TextChanged += new System.EventHandler(this.arme_textBox_TextChanged);
-            // 
-            // armeBindingSource
-            // 
-            this.armeBindingSource.DataMember = "arme";
-            this.armeBindingSource.DataSource = this.escrimeDataSet;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label3.Location = new System.Drawing.Point(67, 12);
+            this.label3.Location = new System.Drawing.Point(50, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 26);
+            this.label3.Size = new System.Drawing.Size(86, 21);
             this.label3.TabIndex = 1;
             this.label3.Text = "Armes";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // dataGridView_Armes
             // 
@@ -711,15 +692,14 @@
             this.idDataGridViewTextBoxColumn2,
             this.libelleDataGridViewTextBoxColumn});
             this.dataGridView_Armes.DataSource = this.armeBindingSource;
-            this.dataGridView_Armes.Location = new System.Drawing.Point(0, 40);
-            this.dataGridView_Armes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView_Armes.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView_Armes.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_Armes.Name = "dataGridView_Armes";
             this.dataGridView_Armes.RowHeadersWidth = 51;
             this.dataGridView_Armes.RowTemplate.Height = 24;
             this.dataGridView_Armes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Armes.Size = new System.Drawing.Size(302, 409);
+            this.dataGridView_Armes.Size = new System.Drawing.Size(226, 332);
             this.dataGridView_Armes.TabIndex = 0;
-            this.dataGridView_Armes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Armes_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn2
             // 
@@ -737,6 +717,11 @@
             this.libelleDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.libelleDataGridViewTextBoxColumn.Name = "libelleDataGridViewTextBoxColumn";
             this.libelleDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // armeBindingSource
+            // 
+            this.armeBindingSource.DataMember = "arme";
+            this.armeBindingSource.DataSource = this.escrimeDataSet;
             // 
             // clubTableAdapter
             // 
@@ -774,11 +759,11 @@
             // 
             // Frm_club
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 501);
+            this.ClientSize = new System.Drawing.Size(800, 407);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_club";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Frm_club_Load);
@@ -794,8 +779,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Adherent)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Armes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.armeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.armerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
